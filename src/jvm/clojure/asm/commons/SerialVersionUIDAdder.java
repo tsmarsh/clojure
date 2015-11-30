@@ -2,19 +2,19 @@
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
- *
+ * <p/>
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
+ * notice, this list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in the
- *    documentation and/or other materials provided with the distribution.
+ * notice, this list of conditions and the following disclaimer in the
+ * documentation and/or other materials provided with the distribution.
  * 3. Neither the name of the copyright holders nor the names of its
- *    contributors may be used to endorse or promote products derived from
- *    this software without specific prior written permission.
- *
+ * contributors may be used to endorse or promote products derived from
+ * this software without specific prior written permission.
+ * <p/>
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -29,6 +29,11 @@
  */
 package clojure.asm.commons;
 
+import clojure.asm.ClassVisitor;
+import clojure.asm.FieldVisitor;
+import clojure.asm.MethodVisitor;
+import clojure.asm.Opcodes;
+
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutput;
 import java.io.DataOutputStream;
@@ -37,11 +42,6 @@ import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-
-import clojure.asm.ClassVisitor;
-import clojure.asm.FieldVisitor;
-import clojure.asm.MethodVisitor;
-import clojure.asm.Opcodes;
 
 /**
  * A {@link ClassVisitor} that adds a serial version unique identifier to a
@@ -198,8 +198,8 @@ public class SerialVersionUIDAdder extends ClassVisitor {
      */
     @Override
     public void visit(final int version, final int access, final String name,
-            final String signature, final String superName,
-            final String[] interfaces) {
+                      final String signature, final String superName,
+                      final String[] interfaces) {
         computeSVUID = (access & Opcodes.ACC_INTERFACE) == 0;
 
         if (computeSVUID) {
@@ -217,7 +217,7 @@ public class SerialVersionUIDAdder extends ClassVisitor {
      */
     @Override
     public MethodVisitor visitMethod(final int access, final String name,
-            final String desc, final String signature, final String[] exceptions) {
+                                     final String desc, final String signature, final String[] exceptions) {
         if (computeSVUID) {
             if ("<clinit>".equals(name)) {
                 hasStaticInitializer = true;
@@ -231,9 +231,9 @@ public class SerialVersionUIDAdder extends ClassVisitor {
              */
             int mods = access
                     & (Opcodes.ACC_PUBLIC | Opcodes.ACC_PRIVATE
-                            | Opcodes.ACC_PROTECTED | Opcodes.ACC_STATIC
-                            | Opcodes.ACC_FINAL | Opcodes.ACC_SYNCHRONIZED
-                            | Opcodes.ACC_NATIVE | Opcodes.ACC_ABSTRACT | Opcodes.ACC_STRICT);
+                    | Opcodes.ACC_PROTECTED | Opcodes.ACC_STATIC
+                    | Opcodes.ACC_FINAL | Opcodes.ACC_SYNCHRONIZED
+                    | Opcodes.ACC_NATIVE | Opcodes.ACC_ABSTRACT | Opcodes.ACC_STRICT);
 
             // all non private methods
             if ((access & Opcodes.ACC_PRIVATE) == 0) {
@@ -254,7 +254,7 @@ public class SerialVersionUIDAdder extends ClassVisitor {
      */
     @Override
     public FieldVisitor visitField(final int access, final String name,
-            final String desc, final String signature, final Object value) {
+                                   final String desc, final String signature, final Object value) {
         if (computeSVUID) {
             if ("serialVersionUID".equals(name)) {
                 // since the class already has SVUID, we won't be computing it.
@@ -271,8 +271,8 @@ public class SerialVersionUIDAdder extends ClassVisitor {
                     || (access & (Opcodes.ACC_STATIC | Opcodes.ACC_TRANSIENT)) == 0) {
                 int mods = access
                         & (Opcodes.ACC_PUBLIC | Opcodes.ACC_PRIVATE
-                                | Opcodes.ACC_PROTECTED | Opcodes.ACC_STATIC
-                                | Opcodes.ACC_FINAL | Opcodes.ACC_VOLATILE | Opcodes.ACC_TRANSIENT);
+                        | Opcodes.ACC_PROTECTED | Opcodes.ACC_STATIC
+                        | Opcodes.ACC_FINAL | Opcodes.ACC_VOLATILE | Opcodes.ACC_TRANSIENT);
                 svuidFields.add(new Item(name, mods, desc));
             }
         }
@@ -289,7 +289,7 @@ public class SerialVersionUIDAdder extends ClassVisitor {
      */
     @Override
     public void visitInnerClass(final String aname, final String outerName,
-            final String innerName, final int attr_access) {
+                                final String innerName, final int attr_access) {
         if ((name != null) && name.equals(aname)) {
             this.access = attr_access;
         }
@@ -363,7 +363,7 @@ public class SerialVersionUIDAdder extends ClassVisitor {
              */
             dos.writeInt(access
                     & (Opcodes.ACC_PUBLIC | Opcodes.ACC_FINAL
-                            | Opcodes.ACC_INTERFACE | Opcodes.ACC_ABSTRACT));
+                    | Opcodes.ACC_INTERFACE | Opcodes.ACC_ABSTRACT));
 
             /*
              * 3. The name of each interface sorted by name written using UTF
@@ -479,7 +479,7 @@ public class SerialVersionUIDAdder extends ClassVisitor {
      *                if an error occurs
      */
     private static void writeItems(final Collection<Item> itemCollection,
-            final DataOutput dos, final boolean dotted) throws IOException {
+                                   final DataOutput dos, final boolean dotted) throws IOException {
         int size = itemCollection.size();
         Item[] items = itemCollection.toArray(new Item[size]);
         Arrays.sort(items);

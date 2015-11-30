@@ -2,19 +2,19 @@
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
- *
+ * <p/>
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
+ * notice, this list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in the
- *    documentation and/or other materials provided with the distribution.
+ * notice, this list of conditions and the following disclaimer in the
+ * documentation and/or other materials provided with the distribution.
  * 3. Neither the name of the copyright holders nor the names of its
- *    contributors may be used to endorse or promote products derived from
- *    this software without specific prior written permission.
- *
+ * contributors may be used to endorse or promote products derived from
+ * this software without specific prior written permission.
+ * <p/>
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -652,8 +652,8 @@ public class ClassWriter extends ClassVisitor {
 
     @Override
     public final void visit(final int version, final int access,
-            final String name, final String signature, final String superName,
-            final String[] interfaces) {
+                            final String name, final String signature, final String superName,
+                            final String[] interfaces) {
         this.version = version;
         this.access = access;
         this.name = newClass(name);
@@ -683,7 +683,7 @@ public class ClassWriter extends ClassVisitor {
 
     @Override
     public final void visitOuterClass(final String owner, final String name,
-            final String desc) {
+                                      final String desc) {
         enclosingMethodOwner = newClass(owner);
         if (name != null && desc != null) {
             enclosingMethod = newNameType(name, desc);
@@ -692,7 +692,7 @@ public class ClassWriter extends ClassVisitor {
 
     @Override
     public final AnnotationVisitor visitAnnotation(final String desc,
-            final boolean visible) {
+                                                   final boolean visible) {
         if (!ClassReader.ANNOTATIONS) {
             return null;
         }
@@ -718,7 +718,7 @@ public class ClassWriter extends ClassVisitor {
 
     @Override
     public final void visitInnerClass(final String name,
-            final String outerName, final String innerName, final int access) {
+                                      final String outerName, final String innerName, final int access) {
         if (innerClasses == null) {
             innerClasses = new ByteVector();
         }
@@ -731,13 +731,13 @@ public class ClassWriter extends ClassVisitor {
 
     @Override
     public final FieldVisitor visitField(final int access, final String name,
-            final String desc, final String signature, final Object value) {
+                                         final String desc, final String signature, final Object value) {
         return new FieldWriter(this, access, name, desc, signature, value);
     }
 
     @Override
     public final MethodVisitor visitMethod(final int access, final String name,
-            final String desc, final String signature, final String[] exceptions) {
+                                           final String desc, final String signature, final String[] exceptions) {
         return new MethodWriter(this, access, name, desc, signature,
                 exceptions, computeMaxs, computeFrames);
     }
@@ -1107,7 +1107,7 @@ public class ClassWriter extends ClassVisitor {
      * @return a new or an already existing method type reference item.
      */
     Item newHandleItem(final int tag, final String owner, final String name,
-            final String desc) {
+                       final String desc) {
         key4.set(HANDLE_BASE + tag, owner, name, desc);
         Item result = get(key4);
         if (result == null) {
@@ -1149,7 +1149,7 @@ public class ClassWriter extends ClassVisitor {
      *         item.
      */
     public int newHandle(final int tag, final String owner, final String name,
-            final String desc) {
+                         final String desc) {
         return newHandleItem(tag, owner, name, desc).index;
     }
 
@@ -1171,7 +1171,7 @@ public class ClassWriter extends ClassVisitor {
      * @return a new or an already existing invokedynamic type reference item.
      */
     Item newInvokeDynamicItem(final String name, final String desc,
-            final Handle bsm, final Object... bsmArgs) {
+                              final Handle bsm, final Object... bsmArgs) {
         // cache for performance
         ByteVector bootstrapMethods = this.bootstrapMethods;
         if (bootstrapMethods == null) {
@@ -1197,7 +1197,8 @@ public class ClassWriter extends ClassVisitor {
         int length = (1 + 1 + argsLength) << 1; // (bsm + argCount + arguments)
         hashCode &= 0x7FFFFFFF;
         Item result = items[hashCode % items.length];
-        loop: while (result != null) {
+        loop:
+        while (result != null) {
             if (result.type != BSM || result.hashCode != hashCode) {
                 result = result.next;
                 continue;
@@ -1256,7 +1257,7 @@ public class ClassWriter extends ClassVisitor {
      *         item.
      */
     public int newInvokeDynamic(final String name, final String desc,
-            final Handle bsm, final Object... bsmArgs) {
+                                final Handle bsm, final Object... bsmArgs) {
         return newInvokeDynamicItem(name, desc, bsm, bsmArgs).index;
     }
 
@@ -1316,7 +1317,7 @@ public class ClassWriter extends ClassVisitor {
      * @return a new or already existing method reference item.
      */
     Item newMethodItem(final String owner, final String name,
-            final String desc, final boolean itf) {
+                       final String desc, final boolean itf) {
         int type = itf ? IMETH : METH;
         key3.set(type, owner, name, desc);
         Item result = get(key3);
@@ -1345,7 +1346,7 @@ public class ClassWriter extends ClassVisitor {
      * @return the index of a new or already existing method reference item.
      */
     public int newMethod(final String owner, final String name,
-            final String desc, final boolean itf) {
+                         final String desc, final boolean itf) {
         return newMethodItem(owner, name, desc, itf).index;
     }
 

@@ -2,19 +2,19 @@
  * ASM: a very small and fast Java bytecode manipulation framework
  * Copyright (c) 2000-2011 INRIA, France Telecom
  * All rights reserved.
- *
+ * <p/>
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
+ * notice, this list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in the
- *    documentation and/or other materials provided with the distribution.
+ * notice, this list of conditions and the following disclaimer in the
+ * documentation and/or other materials provided with the distribution.
  * 3. Neither the name of the copyright holders nor the names of its
- *    contributors may be used to endorse or promote products derived from
- *    this software without specific prior written permission.
- *
+ * contributors may be used to endorse or promote products derived from
+ * this software without specific prior written permission.
+ * <p/>
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -253,7 +253,7 @@ public class Type {
      *         types.
      */
     public static Type getMethodType(final Type returnType,
-            final Type... argumentTypes) {
+                                     final Type... argumentTypes) {
         return getType(getMethodDescriptor(returnType, argumentTypes));
     }
 
@@ -282,7 +282,7 @@ public class Type {
                 return DOUBLE_TYPE;
             } else if (c == Float.TYPE) {
                 return FLOAT_TYPE;
-            } else /* if (c == Long.TYPE) */{
+            } else /* if (c == Long.TYPE) */ {
                 return LONG_TYPE;
             }
         } else {
@@ -446,45 +446,45 @@ public class Type {
     private static Type getType(final char[] buf, final int off) {
         int len;
         switch (buf[off]) {
-        case 'V':
-            return VOID_TYPE;
-        case 'Z':
-            return BOOLEAN_TYPE;
-        case 'C':
-            return CHAR_TYPE;
-        case 'B':
-            return BYTE_TYPE;
-        case 'S':
-            return SHORT_TYPE;
-        case 'I':
-            return INT_TYPE;
-        case 'F':
-            return FLOAT_TYPE;
-        case 'J':
-            return LONG_TYPE;
-        case 'D':
-            return DOUBLE_TYPE;
-        case '[':
-            len = 1;
-            while (buf[off + len] == '[') {
-                ++len;
-            }
-            if (buf[off + len] == 'L') {
-                ++len;
+            case 'V':
+                return VOID_TYPE;
+            case 'Z':
+                return BOOLEAN_TYPE;
+            case 'C':
+                return CHAR_TYPE;
+            case 'B':
+                return BYTE_TYPE;
+            case 'S':
+                return SHORT_TYPE;
+            case 'I':
+                return INT_TYPE;
+            case 'F':
+                return FLOAT_TYPE;
+            case 'J':
+                return LONG_TYPE;
+            case 'D':
+                return DOUBLE_TYPE;
+            case '[':
+                len = 1;
+                while (buf[off + len] == '[') {
+                    ++len;
+                }
+                if (buf[off + len] == 'L') {
+                    ++len;
+                    while (buf[off + len] != ';') {
+                        ++len;
+                    }
+                }
+                return new Type(ARRAY, buf, off, len + 1);
+            case 'L':
+                len = 1;
                 while (buf[off + len] != ';') {
                     ++len;
                 }
-            }
-            return new Type(ARRAY, buf, off, len + 1);
-        case 'L':
-            len = 1;
-            while (buf[off + len] != ';') {
-                ++len;
-            }
-            return new Type(OBJECT, buf, off + 1, len - 1);
+                return new Type(OBJECT, buf, off + 1, len - 1);
             // case '(':
-        default:
-            return new Type(METHOD, buf, off, buf.length - off);
+            default:
+                return new Type(METHOD, buf, off, buf.length - off);
         }
     }
 
@@ -537,34 +537,34 @@ public class Type {
      */
     public String getClassName() {
         switch (sort) {
-        case VOID:
-            return "void";
-        case BOOLEAN:
-            return "boolean";
-        case CHAR:
-            return "char";
-        case BYTE:
-            return "byte";
-        case SHORT:
-            return "short";
-        case INT:
-            return "int";
-        case FLOAT:
-            return "float";
-        case LONG:
-            return "long";
-        case DOUBLE:
-            return "double";
-        case ARRAY:
-            StringBuffer b = new StringBuffer(getElementType().getClassName());
-            for (int i = getDimensions(); i > 0; --i) {
-                b.append("[]");
-            }
-            return b.toString();
-        case OBJECT:
-            return new String(buf, off, len).replace('/', '.');
-        default:
-            return null;
+            case VOID:
+                return "void";
+            case BOOLEAN:
+                return "boolean";
+            case CHAR:
+                return "char";
+            case BYTE:
+                return "byte";
+            case SHORT:
+                return "short";
+            case INT:
+                return "int";
+            case FLOAT:
+                return "float";
+            case LONG:
+                return "long";
+            case DOUBLE:
+                return "double";
+            case ARRAY:
+                StringBuffer b = new StringBuffer(getElementType().getClassName());
+                for (int i = getDimensions(); i > 0; --i) {
+                    b.append("[]");
+                }
+                return b.toString();
+            case OBJECT:
+                return new String(buf, off, len).replace('/', '.');
+            default:
+                return null;
         }
     }
 
@@ -641,7 +641,7 @@ public class Type {
      *         types.
      */
     public static String getMethodDescriptor(final Type returnType,
-            final Type... argumentTypes) {
+                                             final Type... argumentTypes) {
         StringBuffer buf = new StringBuffer();
         buf.append('(');
         for (int i = 0; i < argumentTypes.length; ++i) {
@@ -769,7 +769,7 @@ public class Type {
                     car = 'D';
                 } else if (d == Float.TYPE) {
                     car = 'F';
-                } else /* if (d == Long.TYPE) */{
+                } else /* if (d == Long.TYPE) */ {
                     car = 'J';
                 }
                 buf.append(car);
