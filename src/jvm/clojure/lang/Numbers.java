@@ -946,7 +946,7 @@ public class Numbers {
         public Number divide(Number x, Number y) {
             MathContext mc = (MathContext) MATH_CONTEXT.deref();
             return mc == null
-                    ? toBigDecimal(x).divide(toBigDecimal(y))
+                    ? toBigDecimal(x).divide(toBigDecimal(y), BigDecimal.ROUND_HALF_EVEN)
                     : toBigDecimal(x).divide(toBigDecimal(y), mc);
         }
 
