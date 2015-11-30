@@ -105,7 +105,7 @@ public class Type {
      * The <tt>void</tt> type.
      */
     public static final Type VOID_TYPE = new Type(VOID, null, ('V' << 24)
-            | (5 << 16) | 0, 1);
+            | (5 << 16), 1);
 
     /**
      * The <tt>boolean</tt> type.
@@ -135,7 +135,7 @@ public class Type {
      * The <tt>int</tt> type.
      */
     public static final Type INT_TYPE = new Type(INT, null, ('I' << 24)
-            | (0) | 1, 1);
+            | 1, 1);
 
     /**
      * The <tt>float</tt> type.

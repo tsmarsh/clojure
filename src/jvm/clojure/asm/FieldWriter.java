@@ -133,9 +133,6 @@ final class FieldWriter extends FieldVisitor {
     @Override
     public AnnotationVisitor visitAnnotation(final String desc,
                                              final boolean visible) {
-        if (false) {
-            return null;
-        }
         ByteVector bv = new ByteVector();
         // write type, and reserve space for values count
         bv.putShort(cw.newUTF8(desc)).putShort(0);

@@ -550,14 +550,13 @@ public static class RegexReader extends AFn{
             List list = readDelimitedList(')', r, true, opts);
             if (list.isEmpty())
                 return PersistentList.EMPTY;
-            IObj s = (IObj) PersistentList.create(list);
-//		IObj s = (IObj) RT.seq(list);
+            //		IObj s = (IObj) RT.seq(list);
 //		if(line != -1)
 //			{
 //			return s.withMeta(RT.map(RT.LINE_KEY, line, RT.COLUMN_KEY, column));
 //			}
 //		else
-            return s;
+            return (IObj) PersistentList.create(list);
         }
 
     }

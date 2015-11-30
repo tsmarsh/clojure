@@ -463,9 +463,6 @@ class MethodWriter extends MethodVisitor {
 
     @Override
     public AnnotationVisitor visitAnnotationDefault() {
-        if (false) {
-            return null;
-        }
         annd = new ByteVector();
         return new AnnotationWriter(cw, false, annd, null, 0);
     }
@@ -473,9 +470,6 @@ class MethodWriter extends MethodVisitor {
     @Override
     public AnnotationVisitor visitAnnotation(final String desc,
                                              final boolean visible) {
-        if (false) {
-            return null;
-        }
         ByteVector bv = new ByteVector();
         // write type, and reserve space for values count
         bv.putShort(cw.newUTF8(desc)).putShort(0);
@@ -493,9 +487,6 @@ class MethodWriter extends MethodVisitor {
     @Override
     public AnnotationVisitor visitParameterAnnotation(final int parameter,
                                                       final String desc, final boolean visible) {
-        if (false) {
-            return null;
-        }
         ByteVector bv = new ByteVector();
         if ("Ljava/lang/Synthetic;".equals(desc)) {
             // workaround for a bug in javac with synthetic parameters

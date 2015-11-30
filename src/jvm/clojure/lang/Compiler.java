@@ -441,8 +441,7 @@ public class Compiler implements Opcodes {
                 }
                 if (meta != null) {
                     IPersistentMap metaMap = (IPersistentMap) meta.eval();
-                    if (true)//includesExplicitMetadata((MapExpr) meta))
-                        var.setMeta(metaMap);
+                    var.setMeta(metaMap);
                 }
                 return var.setDynamic(isDynamic);
             } catch (Throwable e) {
@@ -471,13 +470,10 @@ public class Compiler implements Opcodes {
                 gen.invokeVirtual(VAR_TYPE, setDynamicMethod);
             }
             if (meta != null) {
-                if (true)//includesExplicitMetadata((MapExpr) meta))
-                {
-                    gen.dup();
-                    meta.emit(C.EXPRESSION, objx, gen);
-                    gen.checkCast(IPERSISTENTMAP_TYPE);
-                    gen.invokeVirtual(VAR_TYPE, setMetaMethod);
-                }
+                gen.dup();
+                meta.emit(C.EXPRESSION, objx, gen);
+                gen.checkCast(IPERSISTENTMAP_TYPE);
+                gen.invokeVirtual(VAR_TYPE, setMetaMethod);
             }
             if (initProvided) {
                 gen.dup();
@@ -2516,7 +2512,7 @@ public class Compiler implements Opcodes {
                 ((StaticMethodExpr) testExpr).emitIntrinsicPredicate(C.EXPRESSION, objx, gen, falseLabel);
             } else if (maybePrimitiveType(testExpr) == boolean.class) {
                 ((MaybePrimitiveExpr) testExpr).emitUnboxed(C.EXPRESSION, objx, gen);
-                gen.ifZCmp(gen.EQ, falseLabel);
+                gen.ifZCmp(GeneratorAdapter.EQ, falseLabel);
             } else {
                 testExpr.emit(C.EXPRESSION, objx, gen);
                 gen.dup();
@@ -3934,10 +3930,9 @@ public class Compiler implements Opcodes {
             //derived from AFn/RestFn
             ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_MAXS);
 //		ClassWriter cw = new ClassWriter(0);
-            ClassVisitor cv = cw;
-//		ClassVisitor cv = new TraceClassVisitor(new CheckClassAdapter(cw), new PrintWriter(System.out));
+            //		ClassVisitor cv = new TraceClassVisitor(new CheckClassAdapter(cw), new PrintWriter(System.out));
             //ClassVisitor cv = new TraceClassVisitor(cw, new PrintWriter(System.out));
-            cv.visit(V1_5, ACC_PUBLIC + ACC_SUPER + ACC_FINAL, internalName, null, superName, interfaceNames);
+            cw.visit(V1_5, ACC_PUBLIC + ACC_SUPER + ACC_FINAL, internalName, null, superName, interfaceNames);
 //		         superName != null ? superName :
 //		         (isVariadic() ? "clojure/lang/RestFn" : "clojure/lang/AFunction"), null);
             String source = (String) SOURCE.deref();
@@ -3962,22 +3957,22 @@ public class Compiler implements Opcodes {
                         "*L\n" +
                         String.format("%d#1,%d:%d\n", lineBefore, lineAfter - lineBefore, lineBefore) +
                         "*E";
-                cv.visitSource(source, smap);
+                cw.visitSource(source, smap);
             }
-            addAnnotation(cv, classMeta);
+            addAnnotation(cw, classMeta);
             //static fields for constants
             for (int i = 0; i < constants.count(); i++) {
-                cv.visitField(ACC_PUBLIC + ACC_FINAL
+                cw.visitField(ACC_PUBLIC + ACC_FINAL
                                 + ACC_STATIC, constantName(i), constantType(i).getDescriptor(),
                         null, null);
             }
 
             //static fields for lookup sites
             for (int i = 0; i < keywordCallsites.count(); i++) {
-                cv.visitField(ACC_FINAL
+                cw.visitField(ACC_FINAL
                                 + ACC_STATIC, siteNameStatic(i), KEYWORD_LOOKUPSITE_TYPE.getDescriptor(),
                         null, null);
-                cv.visitField(ACC_STATIC, thunkNameStatic(i), ILOOKUP_THUNK_TYPE.getDescriptor(),
+                cw.visitField(ACC_STATIC, thunkNameStatic(i), ILOOKUP_THUNK_TYPE.getDescriptor(),
                         null, null);
             }
 
@@ -3992,7 +3987,7 @@ public class Compiler implements Opcodes {
                     Method.getMethod("void <clinit> ()"),
                     null,
                     null,
-                    cv);
+                    cw);
             clinitgen.visitCode();
             clinitgen.visitLineNumber(line, clinitgen.mark());
 
@@ -4050,7 +4045,7 @@ public class Compiler implements Opcodes {
 
             clinitgen.endMethod();
             if (supportsMeta()) {
-                cv.visitField(ACC_FINAL, "__meta", IPERSISTENTMAP_TYPE.getDescriptor(), null, null);
+                cw.visitField(ACC_FINAL, "__meta", IPERSISTENTMAP_TYPE.getDescriptor(), null, null);
             }
             //instance fields for closed-overs
             for (ISeq s = RT.keys(closes); s != null; s = s.next()) {
@@ -4061,29 +4056,29 @@ public class Compiler implements Opcodes {
                                     (ACC_PUBLIC + ACC_FINAL);
                     FieldVisitor fv;
                     if (lb.getPrimitiveType() != null)
-                        fv = cv.visitField(access
+                        fv = cw.visitField(access
                                 , lb.name, Type.getType(lb.getPrimitiveType()).getDescriptor(),
                                 null, null);
                     else
                         //todo - when closed-overs are fields, use more specific types here and in ctor and emitLocal?
-                        fv = cv.visitField(access
+                        fv = cw.visitField(access
                                 , lb.name, OBJECT_TYPE.getDescriptor(), null, null);
                     addAnnotation(fv, RT.meta(lb.sym));
                 } else {
                     //todo - only enable this non-private+writability for letfns where we need it
                     if (lb.getPrimitiveType() != null)
-                        cv.visitField((isVolatile(lb) ? ACC_VOLATILE : 0)
+                        cw.visitField((isVolatile(lb) ? ACC_VOLATILE : 0)
                                 , lb.name, Type.getType(lb.getPrimitiveType()).getDescriptor(),
                                 null, null);
                     else
-                        cv.visitField(0 //+ (oneTimeUse ? 0 : ACC_FINAL)
+                        cw.visitField(0 //+ (oneTimeUse ? 0 : ACC_FINAL)
                                 , lb.name, OBJECT_TYPE.getDescriptor(), null, null);
                 }
             }
 
             //static fields for callsites and thunks
             for (int i = 0; i < protocolCallsites.count(); i++) {
-                cv.visitField(ACC_PRIVATE + ACC_STATIC, cachedClassName(i), CLASS_TYPE.getDescriptor(), null, null);
+                cw.visitField(ACC_PRIVATE + ACC_STATIC, cachedClassName(i), CLASS_TYPE.getDescriptor(), null, null);
             }
 
             //ctor that takes closed-overs and inits base + fields
@@ -4092,7 +4087,7 @@ public class Compiler implements Opcodes {
                     m,
                     null,
                     null,
-                    cv);
+                    cw);
             Label start = ctorgen.newLabel();
             Label end = ctorgen.newLabel();
             ctorgen.visitCode();
@@ -4158,7 +4153,7 @@ public class Compiler implements Opcodes {
                         alt,
                         null,
                         null,
-                        cv);
+                        cw);
                 ctorgen.visitCode();
                 ctorgen.loadThis();
                 ctorgen.loadArgs();
@@ -4181,7 +4176,7 @@ public class Compiler implements Opcodes {
                         alt,
                         null,
                         null,
-                        cv);
+                        cw);
                 ctorgen.visitCode();
                 ctorgen.loadThis();
                 ctorgen.visitInsn(Opcodes.ACONST_NULL);    //null meta
@@ -4198,7 +4193,7 @@ public class Compiler implements Opcodes {
                         meth,
                         null,
                         null,
-                        cv);
+                        cw);
                 gen.visitCode();
                 gen.loadThis();
                 gen.getField(objtype, "__meta", IPERSISTENTMAP_TYPE);
@@ -4213,7 +4208,7 @@ public class Compiler implements Opcodes {
                         meth,
                         null,
                         null,
-                        cv);
+                        cw);
                 gen.visitCode();
                 gen.newInstance(objtype);
                 gen.dup();
@@ -4235,11 +4230,11 @@ public class Compiler implements Opcodes {
                 gen.endMethod();
             }
 
-            emitStatics(cv);
-            emitMethods(cv);
+            emitStatics(cw);
+            emitMethods(cw);
 
             //end of class
-            cv.visitEnd();
+            cw.visitEnd();
 
             bytecode = cw.toByteArray();
             if (RT.booleanCast(COMPILE_FILES.deref()))
@@ -6556,8 +6551,7 @@ public class Compiler implements Opcodes {
         else if (sym.equals(IN_NS))
             return RT.IN_NS_VAR;
         else {
-            Object o = n.getMapping(sym);
-            return o;
+            return n.getMapping(sym);
         }
     }
 
@@ -6844,15 +6838,14 @@ public class Compiler implements Opcodes {
 
             objx.objtype = Type.getObjectType(objx.internalName);
             ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_MAXS);
-            ClassVisitor cv = cw;
-            cv.visit(V1_5, ACC_PUBLIC + ACC_SUPER, objx.internalName, null, "java/lang/Object", null);
+            cw.visit(V1_5, ACC_PUBLIC + ACC_SUPER, objx.internalName, null, "java/lang/Object", null);
 
             //static load method
             GeneratorAdapter gen = new GeneratorAdapter(ACC_PUBLIC + ACC_STATIC,
                     Method.getMethod("void load ()"),
                     null,
                     null,
-                    cv);
+                    cw);
             gen.visitCode();
 
             Object readerOpts = readerOpts(sourceName);
@@ -6870,7 +6863,7 @@ public class Compiler implements Opcodes {
 
             //static fields for constants
             for (int i = 0; i < objx.constants.count(); i++) {
-                cv.visitField(ACC_PUBLIC + ACC_FINAL + ACC_STATIC, objx.constantName(i), objx.constantType(i).getDescriptor(),
+                cw.visitField(ACC_PUBLIC + ACC_FINAL + ACC_STATIC, objx.constantName(i), objx.constantType(i).getDescriptor(),
                         null, null);
             }
 
@@ -6884,7 +6877,7 @@ public class Compiler implements Opcodes {
                         Method.getMethod("void __init" + n + "()"),
                         null,
                         null,
-                        cv);
+                        cw);
                 clinitgen.visitCode();
                 try {
                     Var.pushThreadBindings(RT.map(RT.PRINT_DUP, RT.T));
@@ -6906,7 +6899,7 @@ public class Compiler implements Opcodes {
                     Method.getMethod("void <clinit> ()"),
                     null,
                     null,
-                    cv);
+                    cw);
             clinitgen.visitCode();
             Label startTry = clinitgen.newLabel();
             Label endTry = clinitgen.newLabel();
@@ -6942,7 +6935,7 @@ public class Compiler implements Opcodes {
             clinitgen.endMethod();
 
             //end of class
-            cv.visitEnd();
+            cw.visitEnd();
 
             writeClassFile(objx.internalName, cw.toByteArray());
         } catch (LispReader.ReaderException e) {
@@ -6982,9 +6975,8 @@ public class Compiler implements Opcodes {
                     rform = rform.next().next();
                 }
 
-                ObjExpr ret = build((IPersistentVector) RT.get(opts, implementsKey, PersistentVector.EMPTY), fields, null, tagname, classname,
+                return build((IPersistentVector) RT.get(opts, implementsKey, PersistentVector.EMPTY), fields, null, tagname, classname,
                         (Symbol) RT.get(opts, RT.TAG_KEY), rform, frm, opts);
-                return ret;
             }
         }
 
@@ -7133,8 +7125,7 @@ public class Compiler implements Opcodes {
          */
         static Class compileStub(String superName, NewInstanceExpr ret, String[] interfaceNames, Object frm) {
             ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_MAXS);
-            ClassVisitor cv = cw;
-            cv.visit(V1_5, ACC_PUBLIC + ACC_SUPER, COMPILE_STUB_PREFIX + "/" + ret.internalName,
+            cw.visit(V1_5, ACC_PUBLIC + ACC_SUPER, COMPILE_STUB_PREFIX + "/" + ret.internalName,
                     null, superName, interfaceNames);
 
             //instance fields for closed-overs
@@ -7144,12 +7135,12 @@ public class Compiler implements Opcodes {
                         ret.isMutable(lb) ? 0 :
                                 ACC_FINAL);
                 if (lb.getPrimitiveType() != null)
-                    cv.visitField(access
+                    cw.visitField(access
                             , lb.name, Type.getType(lb.getPrimitiveType()).getDescriptor(),
                             null, null);
                 else
                     //todo - when closed-overs are fields, use more specific types here and in ctor and emitLocal?
-                    cv.visitField(access
+                    cw.visitField(access
                             , lb.name, OBJECT_TYPE.getDescriptor(), null, null);
             }
 
@@ -7159,7 +7150,7 @@ public class Compiler implements Opcodes {
                     m,
                     null,
                     null,
-                    cv);
+                    cw);
             ctorgen.visitCode();
             ctorgen.loadThis();
             ctorgen.invokeConstructor(Type.getObjectType(superName), voidctor);
@@ -7175,7 +7166,7 @@ public class Compiler implements Opcodes {
                         alt,
                         null,
                         null,
-                        cv);
+                        cw);
                 ctorgen.visitCode();
                 ctorgen.loadThis();
                 ctorgen.loadArgs();
@@ -7189,7 +7180,7 @@ public class Compiler implements Opcodes {
                 ctorgen.endMethod();
             }
             //end of class
-            cv.visitEnd();
+            cw.visitEnd();
 
             byte[] bytecode = cw.toByteArray();
             DynamicClassLoader loader = (DynamicClassLoader) LOADER.deref();

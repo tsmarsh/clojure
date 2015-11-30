@@ -693,9 +693,6 @@ public class ClassWriter extends ClassVisitor {
     @Override
     public final AnnotationVisitor visitAnnotation(final String desc,
                                                    final boolean visible) {
-        if (false) {
-            return null;
-        }
         ByteVector bv = new ByteVector();
         // write type, and reserve space for values count
         bv.putShort(newUTF8(desc)).putShort(0);

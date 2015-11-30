@@ -224,8 +224,7 @@ public class LispReader {
                 }
 
                 if (Character.isDigit(ch)) {
-                    Object n = readNumber(r, (char) ch);
-                    return n;
+                    return readNumber(r, (char) ch);
                 }
 
                 IFn macroFn = getMacro(ch);
@@ -241,8 +240,7 @@ public class LispReader {
                     int ch2 = read1(r);
                     if (Character.isDigit(ch2)) {
                         unread(r, ch2);
-                        Object n = readNumber(r, (char) ch);
-                        return n;
+                        return readNumber(r, (char) ch);
                     }
                     unread(r, ch2);
                 }

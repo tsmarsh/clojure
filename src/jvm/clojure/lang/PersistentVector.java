@@ -607,7 +607,7 @@ public class PersistentVector extends APersistentVector implements IObj, IEditab
             return ret;
         }
 
-        final private int tailoff() {
+        private int tailoff() {
             if (cnt < 32)
                 return 0;
             return ((cnt - 1) >>> 5) << 5;
@@ -749,16 +749,14 @@ public class PersistentVector extends APersistentVector implements IObj, IEditab
                 if (newchild == null && subidx == 0)
                     return null;
                 else {
-                    Node ret = node;
-                    ret.array[subidx] = newchild;
-                    return ret;
+                    node.array[subidx] = newchild;
+                    return node;
                 }
             } else if (subidx == 0)
                 return null;
             else {
-                Node ret = node;
-                ret.array[subidx] = null;
-                return ret;
+                node.array[subidx] = null;
+                return node;
             }
         }
     }
