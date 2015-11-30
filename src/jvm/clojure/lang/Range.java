@@ -31,24 +31,16 @@ public class Range extends ASeq implements IChunkedSeq, IReduce {
     private volatile ISeq _chunkNext;        // lazy
     private volatile ISeq _next;             // cached
 
-    private static interface BoundsCheck extends Serializable {
+    private interface BoundsCheck extends Serializable {
         boolean exceededBounds(Object val);
     }
 
     private static BoundsCheck positiveStep(final Object end) {
-        return new BoundsCheck() {
-            public boolean exceededBounds(Object val) {
-                return Numbers.gte(val, end);
-            }
-        };
+        return (BoundsCheck) val -> Numbers.gte(val, end);
     }
 
     private static BoundsCheck negativeStep(final Object end) {
-        return new BoundsCheck() {
-            public boolean exceededBounds(Object val) {
-                return Numbers.lte(val, end);
-            }
-        };
+        return (BoundsCheck) val -> Numbers.lte(val, end);
     }
 
     private Range(Object start, Object end, Object step, BoundsCheck boundsCheck) {

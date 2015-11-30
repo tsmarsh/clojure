@@ -13,9 +13,9 @@
 package clojure.lang;
 
 public interface ITransientSet extends ITransientCollection, Counted {
-    public ITransientSet disjoin(Object key);
+    ITransientSet disjoin(Object key);
 
-    public boolean contains(Object key);
+    boolean contains(Object key);
 
-    public Object get(Object key);
+    Object get(Object key);
 }

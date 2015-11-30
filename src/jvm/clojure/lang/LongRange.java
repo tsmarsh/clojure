@@ -31,24 +31,16 @@ public class LongRange extends ASeq implements Counted, IChunkedSeq, IReduce {
     private volatile ISeq _chunkNext;        // lazy
     private volatile ISeq _next;             // cached
 
-    private static interface BoundsCheck extends Serializable {
+    private interface BoundsCheck extends Serializable {
         boolean exceededBounds(long val);
     }
 
     private static BoundsCheck positiveStep(final long end) {
-        return new BoundsCheck() {
-            public boolean exceededBounds(long val) {
-                return (val >= end);
-            }
-        };
+        return (BoundsCheck) val -> (val >= end);
     }
 
     private static BoundsCheck negativeStep(final long end) {
-        return new BoundsCheck() {
-            public boolean exceededBounds(long val) {
-                return (val <= end);
-            }
-        };
+        return (BoundsCheck) val -> (val <= end);
     }
 
     private LongRange(long start, long end, long step, BoundsCheck boundsCheck) {

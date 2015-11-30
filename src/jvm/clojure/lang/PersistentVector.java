@@ -36,7 +36,7 @@ public class PersistentVector extends APersistentVector implements IObj, IEditab
         }
     }
 
-    final static AtomicReference<Thread> NOEDIT = new AtomicReference<Thread>(null);
+    final static AtomicReference<Thread> NOEDIT = new AtomicReference<>(null);
     public final static Node EMPTY_NODE = new Node(NOEDIT, new Object[32]);
 
     final int cnt;
@@ -535,7 +535,7 @@ public class PersistentVector extends APersistentVector implements IObj, IEditab
         }
 
         static Node editableRoot(Node node) {
-            return new Node(new AtomicReference<Thread>(Thread.currentThread()), node.array.clone());
+            return new Node(new AtomicReference<>(Thread.currentThread()), node.array.clone());
         }
 
         public PersistentVector persistent() {

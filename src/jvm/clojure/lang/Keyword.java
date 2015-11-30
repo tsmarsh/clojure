@@ -36,7 +36,7 @@ public class Keyword implements IFn, Comparable, Named, Serializable, IHashEq {
             if (sym.meta() != null)
                 sym = (Symbol) sym.withMeta(null);
             k = new Keyword(sym);
-            existingRef = table.putIfAbsent(sym, new WeakReference<Keyword>(k, rq));
+            existingRef = table.putIfAbsent(sym, new WeakReference<>(k, rq));
         }
         if (existingRef == null)
             return k;

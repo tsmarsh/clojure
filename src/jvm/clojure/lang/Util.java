@@ -38,32 +38,20 @@ public class Util {
         boolean equiv(Object k1, Object k2);
     }
 
-    static EquivPred equivNull = new EquivPred() {
-        public boolean equiv(Object k1, Object k2) {
-            return k2 == null;
-        }
+    static EquivPred equivNull = (k1, k2) -> k2 == null;
+
+    static EquivPred equivEquals = (k1, k2) -> k1.equals(k2);
+
+    static EquivPred equivNumber = (k1, k2) -> {
+        if (k2 instanceof Number)
+            return Numbers.equal((Number) k1, (Number) k2);
+        return false;
     };
 
-    static EquivPred equivEquals = new EquivPred() {
-        public boolean equiv(Object k1, Object k2) {
-            return k1.equals(k2);
-        }
-    };
-
-    static EquivPred equivNumber = new EquivPred() {
-        public boolean equiv(Object k1, Object k2) {
-            if (k2 instanceof Number)
-                return Numbers.equal((Number) k1, (Number) k2);
-            return false;
-        }
-    };
-
-    static EquivPred equivColl = new EquivPred() {
-        public boolean equiv(Object k1, Object k2) {
-            if (k1 instanceof IPersistentCollection || k2 instanceof IPersistentCollection)
-                return pcequiv(k1, k2);
-            return k1.equals(k2);
-        }
+    static EquivPred equivColl = (k1, k2) -> {
+        if (k1 instanceof IPersistentCollection || k2 instanceof IPersistentCollection)
+            return pcequiv(k1, k2);
+        return k1.equals(k2);
     };
 
     static public EquivPred equivPred(Object k1) {

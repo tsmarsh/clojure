@@ -36,7 +36,7 @@ public class Agent extends ARef {
     static final Keyword FAIL = Keyword.intern(null, "fail");
 
     volatile Object state;
-    AtomicReference<ActionQueue> aq = new AtomicReference<ActionQueue>(ActionQueue.EMPTY);
+    AtomicReference<ActionQueue> aq = new AtomicReference<>(ActionQueue.EMPTY);
 
     volatile Keyword errorMode = CONTINUE;
     volatile IFn errorHandler = null;
@@ -52,15 +52,13 @@ public class Agent extends ARef {
     volatile public static ExecutorService soloExecutor = Executors.newCachedThreadPool(
             createThreadFactory("clojure-agent-send-off-pool-%d", sendOffThreadPoolCounter));
 
-    final static ThreadLocal<IPersistentVector> nested = new ThreadLocal<IPersistentVector>();
+    final static ThreadLocal<IPersistentVector> nested = new ThreadLocal<>();
 
     private static ThreadFactory createThreadFactory(final String format, final AtomicLong threadPoolCounter) {
-        return new ThreadFactory() {
-            public Thread newThread(Runnable runnable) {
-                Thread thread = new Thread(runnable);
-                thread.setName(String.format(format, threadPoolCounter.getAndIncrement()));
-                return thread;
-            }
+        return runnable -> {
+            Thread thread = new Thread(runnable);
+            thread.setName(String.format(format, threadPoolCounter.getAndIncrement()));
+            return thread;
         };
     }
 

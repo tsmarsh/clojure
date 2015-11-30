@@ -12,5 +12,5 @@ package clojure.lang;
 
 public interface IndexedSeq extends ISeq, Sequential, Counted {
 
-    public int index();
+    int index();
 }

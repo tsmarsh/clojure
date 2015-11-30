@@ -21,9 +21,9 @@ import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class DynamicClassLoader extends URLClassLoader {
-    HashMap<Integer, Object[]> constantVals = new HashMap<Integer, Object[]>();
+    HashMap<Integer, Object[]> constantVals = new HashMap<>();
     static ConcurrentHashMap<String, Reference<Class>> classCache =
-            new ConcurrentHashMap<String, Reference<Class>>();
+            new ConcurrentHashMap<>();
 
     static final URL[] EMPTY_URLS = new URL[]{};
 

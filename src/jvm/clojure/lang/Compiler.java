@@ -768,16 +768,16 @@ public class Compiler implements Opcodes {
         }
     }
 
-    static interface AssignableExpr {
+    interface AssignableExpr {
         Object evalAssign(Expr val);
 
         void emitAssign(C context, ObjExpr objx, GeneratorAdapter gen, Expr val);
     }
 
-    static public interface MaybePrimitiveExpr extends Expr {
-        public boolean canEmitPrimitive();
+    public interface MaybePrimitiveExpr extends Expr {
+        boolean canEmitPrimitive();
 
-        public void emitUnboxed(C context, ObjExpr objx, GeneratorAdapter gen);
+        void emitUnboxed(C context, ObjExpr objx, GeneratorAdapter gen);
     }
 
     static public abstract class HostExpr implements Expr, MaybePrimitiveExpr {
@@ -2655,11 +2655,7 @@ public class Compiler implements Opcodes {
         // shortest ensures correct matching behavior, even if some strings are
         // prefixes of others.
         Object[] mungeStrs = RT.toArray(RT.keys(m));
-        Arrays.sort(mungeStrs, new Comparator() {
-            public int compare(Object s1, Object s2) {
-                return ((String) s2).length() - ((String) s1).length();
-            }
-        });
+        Arrays.sort(mungeStrs, (s1, s2) -> ((String) s2).length() - ((String) s1).length());
         StringBuilder sb = new StringBuilder();
         boolean first = true;
         for (Object s : mungeStrs) {
@@ -3713,14 +3709,9 @@ public class Compiler implements Opcodes {
                     methods = RT.conj(methods, variadicMethod);
 
                 if (fn.canBeDirect) {
-                    for (FnMethod fm : (Collection<FnMethod>) methods) {
-                        if (fm.locals != null) {
-                            for (LocalBinding lb : (Collection<LocalBinding>) RT.keys(fm.locals)) {
-                                if (lb.isArg)
-                                    lb.idx -= 1;
-                            }
-                        }
-                    }
+                    ((Collection<FnMethod>) methods).stream().filter(fm -> fm.locals != null).forEach(fm -> {
+                        ((Collection<LocalBinding>) RT.keys(fm.locals)).stream().filter(lb -> lb.isArg).forEach(lb -> lb.idx -= 1);
+                    });
                 }
 
                 fn.methods = methods;
@@ -6670,11 +6661,8 @@ public class Compiler implements Opcodes {
 //	if(!fo.exists())
 //		return null;
 
-        FileInputStream f = new FileInputStream(file);
-        try {
+        try (FileInputStream f = new FileInputStream(file)) {
             return load(new InputStreamReader(f, RT.UTF8), new File(file).getAbsolutePath(), (new File(file)).getName());
-        } finally {
-            f.close();
         }
     }
 
@@ -6761,12 +6749,9 @@ public class Compiler implements Opcodes {
         String path = genPath + File.separator + internalName + ".class";
         File cf = new File(path);
         cf.createNewFile();
-        FileOutputStream cfs = new FileOutputStream(cf);
-        try {
+        try (FileOutputStream cfs = new FileOutputStream(cf)) {
             cfs.write(bytecode);
             cfs.flush();
-        } finally {
-            cfs.close();
         }
     }
 
@@ -7361,8 +7346,8 @@ public class Compiler implements Opcodes {
             for (; interfaces != null; interfaces = interfaces.next())
                 gatherMethods((Class) interfaces.first(), allm);
 
-            Map<IPersistentVector, java.lang.reflect.Method> mm = new HashMap<IPersistentVector, java.lang.reflect.Method>();
-            Map<IPersistentVector, Set<Class>> covariants = new HashMap<IPersistentVector, Set<Class>>();
+            Map<IPersistentVector, java.lang.reflect.Method> mm = new HashMap<>();
+            Map<IPersistentVector, Set<Class>> covariants = new HashMap<>();
             for (Object o : allm.entrySet()) {
                 Map.Entry e = (Map.Entry) o;
                 IPersistentVector mk = (IPersistentVector) e.getKey();
@@ -7372,7 +7357,7 @@ public class Compiler implements Opcodes {
                 {
                     Set<Class> cvs = covariants.get(mk);
                     if (cvs == null) {
-                        cvs = new HashSet<Class>();
+                        cvs = new HashSet<>();
                         covariants.put(mk, cvs);
                     }
                     java.lang.reflect.Method om = mm.get(mk);
@@ -7632,28 +7617,40 @@ public class Compiler implements Opcodes {
         return tc;
     }
 
+    @SuppressWarnings("IfCanBeSwitch")
     static Class primClass(Symbol sym) {
         if (sym == null)
             return null;
         Class c = null;
-        if (sym.name.equals("int"))
-            c = int.class;
-        else if (sym.name.equals("long"))
-            c = long.class;
-        else if (sym.name.equals("float"))
-            c = float.class;
-        else if (sym.name.equals("double"))
-            c = double.class;
-        else if (sym.name.equals("char"))
-            c = char.class;
-        else if (sym.name.equals("short"))
-            c = short.class;
-        else if (sym.name.equals("byte"))
-            c = byte.class;
-        else if (sym.name.equals("boolean"))
-            c = boolean.class;
-        else if (sym.name.equals("void"))
-            c = void.class;
+        switch (sym.name) {
+            case "int":
+                c = int.class;
+                break;
+            case "long":
+                c = long.class;
+                break;
+            case "float":
+                c = float.class;
+                break;
+            case "double":
+                c = double.class;
+                break;
+            case "char":
+                c = char.class;
+                break;
+            case "short":
+                c = short.class;
+                break;
+            case "byte":
+                c = byte.class;
+                break;
+            case "boolean":
+                c = boolean.class;
+                break;
+            case "void":
+                c = void.class;
+                break;
+        }
         return c;
     }
 

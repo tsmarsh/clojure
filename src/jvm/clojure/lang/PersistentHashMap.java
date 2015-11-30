@@ -240,15 +240,13 @@ public class PersistentHashMap extends APersistentMap implements IEditableCollec
     public Object fold(long n, final IFn combinef, final IFn reducef,
                        IFn fjinvoke, final IFn fjtask, final IFn fjfork, final IFn fjjoin) {
         //we are ignoring n for now
-        Callable top = new Callable() {
-            public Object call() throws Exception {
-                Object ret = combinef.invoke();
-                if (root != null)
-                    ret = combinef.invoke(ret, root.fold(combinef, reducef, fjtask, fjfork, fjjoin));
-                return hasNull ?
-                        combinef.invoke(ret, reducef.invoke(combinef.invoke(), null, nullValue))
-                        : ret;
-            }
+        Callable top = () -> {
+            Object ret = combinef.invoke();
+            if (root != null)
+                ret = combinef.invoke(ret, root.fold(combinef, reducef, fjtask, fjfork, fjjoin));
+            return hasNull ?
+                    combinef.invoke(ret, reducef.invoke(combinef.invoke(), null, nullValue))
+                    : ret;
         };
         return fjinvoke.invoke(top);
     }
@@ -293,7 +291,7 @@ public class PersistentHashMap extends APersistentMap implements IEditableCollec
 
 
         TransientHashMap(PersistentHashMap m) {
-            this(new AtomicReference<Thread>(Thread.currentThread()), m.root, m.count, m.hasNull, m.nullValue);
+            this(new AtomicReference<>(Thread.currentThread()), m.root, m.count, m.hasNull, m.nullValue);
         }
 
         TransientHashMap(AtomicReference<Thread> edit, INode root, int count, boolean hasNull, Object nullValue) {
@@ -368,7 +366,7 @@ public class PersistentHashMap extends APersistentMap implements IEditableCollec
         }
     }
 
-    static interface INode extends Serializable {
+    interface INode extends Serializable {
         INode assoc(int shift, int hash, Object key, Object val, Box addedLeaf);
 
         INode without(int shift, int hash, Object key);
@@ -383,7 +381,7 @@ public class PersistentHashMap extends APersistentMap implements IEditableCollec
 
         INode without(AtomicReference<Thread> edit, int shift, int hash, Object key, Box removedLeaf);
 
-        public Object kvreduce(IFn f, Object init);
+        Object kvreduce(IFn f, Object init);
 
         Object fold(IFn combinef, IFn reducef, IFn fjtask, IFn fjfork, IFn fjjoin);
 
@@ -466,14 +464,10 @@ public class PersistentHashMap extends APersistentMap implements IEditableCollec
 
         public Object fold(final IFn combinef, final IFn reducef,
                            final IFn fjtask, final IFn fjfork, final IFn fjjoin) {
-            List<Callable> tasks = new ArrayList();
+            List<Callable> tasks = new ArrayList<>();
             for (final INode node : array) {
                 if (node != null) {
-                    tasks.add(new Callable() {
-                        public Object call() throws Exception {
-                            return node.fold(combinef, reducef, fjtask, fjfork, fjjoin);
-                        }
-                    });
+                    tasks.add(() -> node.fold(combinef, reducef, fjtask, fjfork, fjjoin));
                 }
             }
 
@@ -498,11 +492,7 @@ public class PersistentHashMap extends APersistentMap implements IEditableCollec
             List<Callable> t1 = tasks.subList(0, tasks.size() / 2);
             final List<Callable> t2 = tasks.subList(tasks.size() / 2, tasks.size());
 
-            Object forked = fjfork.invoke(fjtask.invoke(new Callable() {
-                public Object call() throws Exception {
-                    return foldTasks(t2, combinef, fjtask, fjfork, fjjoin);
-                }
-            }));
+            Object forked = fjfork.invoke(fjtask.invoke((Callable) () -> foldTasks(t2, combinef, fjtask, fjfork, fjjoin)));
 
             return combinef.invoke(foldTasks(t1, combinef, fjtask, fjfork, fjjoin), fjjoin.invoke(forked));
         }
@@ -1184,7 +1174,7 @@ public static void main(String[] args){
         if (key1hash == key2hash)
             return new HashCollisionNode(null, key1hash, 2, new Object[]{key1, val1, key2, val2});
         Box addedLeaf = new Box(null);
-        AtomicReference<Thread> edit = new AtomicReference<Thread>();
+        AtomicReference<Thread> edit = new AtomicReference<>();
         return BitmapIndexedNode.EMPTY
                 .assoc(edit, shift, key1hash, key1, val1, addedLeaf)
                 .assoc(edit, shift, key2hash, key2, val2, addedLeaf);

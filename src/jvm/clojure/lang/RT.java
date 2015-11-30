@@ -2060,15 +2060,13 @@ public class RT {
 
 
     static public ClassLoader makeClassLoader() {
-        return (ClassLoader) AccessController.doPrivileged(new PrivilegedAction() {
-            public Object run() {
-                try {
-                    Var.pushThreadBindings(RT.map(USE_CONTEXT_CLASSLOADER, RT.T));
+        return (ClassLoader) AccessController.doPrivileged((PrivilegedAction) () -> {
+            try {
+                Var.pushThreadBindings(RT.map(USE_CONTEXT_CLASSLOADER, RT.T));
 //			getRootClassLoader();
-                    return new DynamicClassLoader(baseLoader());
-                } finally {
-                    Var.popThreadBindings();
-                }
+                return new DynamicClassLoader(baseLoader());
+            } finally {
+                Var.popThreadBindings();
             }
         });
     }

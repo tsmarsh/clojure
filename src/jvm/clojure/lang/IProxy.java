@@ -14,10 +14,10 @@ package clojure.lang;
 
 public interface IProxy {
 
-    public void __initClojureFnMappings(IPersistentMap m);
+    void __initClojureFnMappings(IPersistentMap m);
 
-    public void __updateClojureFnMappings(IPersistentMap m);
+    void __updateClojureFnMappings(IPersistentMap m);
 
-    public IPersistentMap __getClojureFnMappings();
+    IPersistentMap __getClojureFnMappings();
 
 }

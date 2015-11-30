@@ -234,13 +234,15 @@ public class EdnReader {
         return uc;
     }
 
+    @SuppressWarnings("IfCanBeSwitch")
     static private Object interpretToken(String s) {
-        if (s.equals("nil")) {
-            return null;
-        } else if (s.equals("true")) {
-            return RT.T;
-        } else if (s.equals("false")) {
-            return RT.F;
+        switch (s) {
+            case "nil":
+                return null;
+            case "true":
+                return RT.T;
+            case "false":
+                return RT.F;
         }
 
         Object ret = null;

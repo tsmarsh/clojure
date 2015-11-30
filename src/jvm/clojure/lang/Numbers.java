@@ -18,7 +18,7 @@ import java.math.MathContext;
 
 public class Numbers {
 
-    static interface Ops {
+    interface Ops {
         Ops combine(Ops y);
 
         Ops opsWith(LongOps x);
@@ -31,45 +31,45 @@ public class Numbers {
 
         Ops opsWith(BigDecimalOps x);
 
-        public boolean isZero(Number x);
+        boolean isZero(Number x);
 
-        public boolean isPos(Number x);
+        boolean isPos(Number x);
 
-        public boolean isNeg(Number x);
+        boolean isNeg(Number x);
 
-        public Number add(Number x, Number y);
+        Number add(Number x, Number y);
 
-        public Number addP(Number x, Number y);
+        Number addP(Number x, Number y);
 
-        public Number multiply(Number x, Number y);
+        Number multiply(Number x, Number y);
 
-        public Number multiplyP(Number x, Number y);
+        Number multiplyP(Number x, Number y);
 
-        public Number divide(Number x, Number y);
+        Number divide(Number x, Number y);
 
-        public Number quotient(Number x, Number y);
+        Number quotient(Number x, Number y);
 
-        public Number remainder(Number x, Number y);
+        Number remainder(Number x, Number y);
 
-        public boolean equiv(Number x, Number y);
+        boolean equiv(Number x, Number y);
 
-        public boolean lt(Number x, Number y);
+        boolean lt(Number x, Number y);
 
-        public boolean lte(Number x, Number y);
+        boolean lte(Number x, Number y);
 
-        public boolean gte(Number x, Number y);
+        boolean gte(Number x, Number y);
 
-        public Number negate(Number x);
+        Number negate(Number x);
 
-        public Number negateP(Number x);
+        Number negateP(Number x);
 
-        public Number inc(Number x);
+        Number inc(Number x);
 
-        public Number incP(Number x);
+        Number incP(Number x);
 
-        public Number dec(Number x);
+        Number dec(Number x);
 
-        public Number decP(Number x);
+        Number decP(Number x);
     }
 
     static abstract class OpsP implements Ops {
@@ -1011,7 +1011,7 @@ public class Numbers {
     static final BigIntOps BIGINT_OPS = new BigIntOps();
     static final BigDecimalOps BIGDECIMAL_OPS = new BigDecimalOps();
 
-    static public enum Category {INTEGER, FLOATING, DECIMAL, RATIO}
+    public enum Category {INTEGER, FLOATING, DECIMAL, RATIO}
 
 	static Ops ops(Object x) {
         Class xc = x.getClass();

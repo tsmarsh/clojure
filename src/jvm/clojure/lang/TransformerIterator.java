@@ -106,7 +106,7 @@ public class TransformerIterator implements Iterator {
         throw new UnsupportedOperationException();
     }
 
-    private static interface Buffer {
+    private interface Buffer {
         Buffer add(Object o);
 
         Object remove();

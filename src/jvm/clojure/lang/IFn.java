@@ -22,1507 +22,1507 @@ import java.util.concurrent.Callable;
  */
 public interface IFn extends Callable, Runnable {
 
-    public Object invoke();
+    Object invoke();
 
-    public Object invoke(Object arg1);
+    Object invoke(Object arg1);
 
-    public Object invoke(Object arg1, Object arg2);
+    Object invoke(Object arg1, Object arg2);
 
-    public Object invoke(Object arg1, Object arg2, Object arg3);
+    Object invoke(Object arg1, Object arg2, Object arg3);
 
-    public Object invoke(Object arg1, Object arg2, Object arg3, Object arg4);
+    Object invoke(Object arg1, Object arg2, Object arg3, Object arg4);
 
-    public Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5);
+    Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5);
 
-    public Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6);
+    Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6);
 
-    public Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7)
+    Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7)
             ;
 
-    public Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
-                         Object arg8);
+    Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
+                  Object arg8);
 
-    public Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
-                         Object arg8, Object arg9);
+    Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
+                  Object arg8, Object arg9);
 
-    public Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
-                         Object arg8, Object arg9, Object arg10);
+    Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
+                  Object arg8, Object arg9, Object arg10);
 
-    public Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
-                         Object arg8, Object arg9, Object arg10, Object arg11);
+    Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
+                  Object arg8, Object arg9, Object arg10, Object arg11);
 
-    public Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
-                         Object arg8, Object arg9, Object arg10, Object arg11, Object arg12);
+    Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
+                  Object arg8, Object arg9, Object arg10, Object arg11, Object arg12);
 
-    public Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
-                         Object arg8, Object arg9, Object arg10, Object arg11, Object arg12, Object arg13);
+    Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
+                  Object arg8, Object arg9, Object arg10, Object arg11, Object arg12, Object arg13);
 
-    public Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
-                         Object arg8, Object arg9, Object arg10, Object arg11, Object arg12, Object arg13, Object arg14)
+    Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
+                  Object arg8, Object arg9, Object arg10, Object arg11, Object arg12, Object arg13, Object arg14)
             ;
 
-    public Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
-                         Object arg8, Object arg9, Object arg10, Object arg11, Object arg12, Object arg13, Object arg14,
-                         Object arg15);
+    Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
+                  Object arg8, Object arg9, Object arg10, Object arg11, Object arg12, Object arg13, Object arg14,
+                  Object arg15);
 
-    public Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
-                         Object arg8, Object arg9, Object arg10, Object arg11, Object arg12, Object arg13, Object arg14,
-                         Object arg15, Object arg16);
+    Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
+                  Object arg8, Object arg9, Object arg10, Object arg11, Object arg12, Object arg13, Object arg14,
+                  Object arg15, Object arg16);
 
-    public Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
-                         Object arg8, Object arg9, Object arg10, Object arg11, Object arg12, Object arg13, Object arg14,
-                         Object arg15, Object arg16, Object arg17);
+    Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
+                  Object arg8, Object arg9, Object arg10, Object arg11, Object arg12, Object arg13, Object arg14,
+                  Object arg15, Object arg16, Object arg17);
 
-    public Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
-                         Object arg8, Object arg9, Object arg10, Object arg11, Object arg12, Object arg13, Object arg14,
-                         Object arg15, Object arg16, Object arg17, Object arg18);
+    Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
+                  Object arg8, Object arg9, Object arg10, Object arg11, Object arg12, Object arg13, Object arg14,
+                  Object arg15, Object arg16, Object arg17, Object arg18);
 
-    public Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
-                         Object arg8, Object arg9, Object arg10, Object arg11, Object arg12, Object arg13, Object arg14,
-                         Object arg15, Object arg16, Object arg17, Object arg18, Object arg19);
+    Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
+                  Object arg8, Object arg9, Object arg10, Object arg11, Object arg12, Object arg13, Object arg14,
+                  Object arg15, Object arg16, Object arg17, Object arg18, Object arg19);
 
-    public Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
-                         Object arg8, Object arg9, Object arg10, Object arg11, Object arg12, Object arg13, Object arg14,
-                         Object arg15, Object arg16, Object arg17, Object arg18, Object arg19, Object arg20)
+    Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
+                  Object arg8, Object arg9, Object arg10, Object arg11, Object arg12, Object arg13, Object arg14,
+                  Object arg15, Object arg16, Object arg17, Object arg18, Object arg19, Object arg20)
             ;
 
-    public Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
-                         Object arg8, Object arg9, Object arg10, Object arg11, Object arg12, Object arg13, Object arg14,
-                         Object arg15, Object arg16, Object arg17, Object arg18, Object arg19, Object arg20,
-                         Object... args)
+    Object invoke(Object arg1, Object arg2, Object arg3, Object arg4, Object arg5, Object arg6, Object arg7,
+                  Object arg8, Object arg9, Object arg10, Object arg11, Object arg12, Object arg13, Object arg14,
+                  Object arg15, Object arg16, Object arg17, Object arg18, Object arg19, Object arg20,
+                  Object... args)
             ;
 
-    public Object applyTo(ISeq arglist);
+    Object applyTo(ISeq arglist);
 
-    static public interface L {
+    interface L {
         long invokePrim();
     }
 
-    static public interface D {
+    interface D {
         double invokePrim();
     }
 
-    static public interface OL {
+    interface OL {
         long invokePrim(Object arg0);
     }
 
-    static public interface OD {
+    interface OD {
         double invokePrim(Object arg0);
     }
 
-    static public interface LO {
+    interface LO {
         Object invokePrim(long arg0);
     }
 
-    static public interface LL {
+    interface LL {
         long invokePrim(long arg0);
     }
 
-    static public interface LD {
+    interface LD {
         double invokePrim(long arg0);
     }
 
-    static public interface DO {
+    interface DO {
         Object invokePrim(double arg0);
     }
 
-    static public interface DL {
+    interface DL {
         long invokePrim(double arg0);
     }
 
-    static public interface DD {
+    interface DD {
         double invokePrim(double arg0);
     }
 
-    static public interface OOL {
+    interface OOL {
         long invokePrim(Object arg0, Object arg1);
     }
 
-    static public interface OOD {
+    interface OOD {
         double invokePrim(Object arg0, Object arg1);
     }
 
-    static public interface OLO {
+    interface OLO {
         Object invokePrim(Object arg0, long arg1);
     }
 
-    static public interface OLL {
+    interface OLL {
         long invokePrim(Object arg0, long arg1);
     }
 
-    static public interface OLD {
+    interface OLD {
         double invokePrim(Object arg0, long arg1);
     }
 
-    static public interface ODO {
+    interface ODO {
         Object invokePrim(Object arg0, double arg1);
     }
 
-    static public interface ODL {
+    interface ODL {
         long invokePrim(Object arg0, double arg1);
     }
 
-    static public interface ODD {
+    interface ODD {
         double invokePrim(Object arg0, double arg1);
     }
 
-    static public interface LOO {
+    interface LOO {
         Object invokePrim(long arg0, Object arg1);
     }
 
-    static public interface LOL {
+    interface LOL {
         long invokePrim(long arg0, Object arg1);
     }
 
-    static public interface LOD {
+    interface LOD {
         double invokePrim(long arg0, Object arg1);
     }
 
-    static public interface LLO {
+    interface LLO {
         Object invokePrim(long arg0, long arg1);
     }
 
-    static public interface LLL {
+    interface LLL {
         long invokePrim(long arg0, long arg1);
     }
 
-    static public interface LLD {
+    interface LLD {
         double invokePrim(long arg0, long arg1);
     }
 
-    static public interface LDO {
+    interface LDO {
         Object invokePrim(long arg0, double arg1);
     }
 
-    static public interface LDL {
+    interface LDL {
         long invokePrim(long arg0, double arg1);
     }
 
-    static public interface LDD {
+    interface LDD {
         double invokePrim(long arg0, double arg1);
     }
 
-    static public interface DOO {
+    interface DOO {
         Object invokePrim(double arg0, Object arg1);
     }
 
-    static public interface DOL {
+    interface DOL {
         long invokePrim(double arg0, Object arg1);
     }
 
-    static public interface DOD {
+    interface DOD {
         double invokePrim(double arg0, Object arg1);
     }
 
-    static public interface DLO {
+    interface DLO {
         Object invokePrim(double arg0, long arg1);
     }
 
-    static public interface DLL {
+    interface DLL {
         long invokePrim(double arg0, long arg1);
     }
 
-    static public interface DLD {
+    interface DLD {
         double invokePrim(double arg0, long arg1);
     }
 
-    static public interface DDO {
+    interface DDO {
         Object invokePrim(double arg0, double arg1);
     }
 
-    static public interface DDL {
+    interface DDL {
         long invokePrim(double arg0, double arg1);
     }
 
-    static public interface DDD {
+    interface DDD {
         double invokePrim(double arg0, double arg1);
     }
 
-    static public interface OOOL {
+    interface OOOL {
         long invokePrim(Object arg0, Object arg1, Object arg2);
     }
 
-    static public interface OOOD {
+    interface OOOD {
         double invokePrim(Object arg0, Object arg1, Object arg2);
     }
 
-    static public interface OOLO {
+    interface OOLO {
         Object invokePrim(Object arg0, Object arg1, long arg2);
     }
 
-    static public interface OOLL {
+    interface OOLL {
         long invokePrim(Object arg0, Object arg1, long arg2);
     }
 
-    static public interface OOLD {
+    interface OOLD {
         double invokePrim(Object arg0, Object arg1, long arg2);
     }
 
-    static public interface OODO {
+    interface OODO {
         Object invokePrim(Object arg0, Object arg1, double arg2);
     }
 
-    static public interface OODL {
+    interface OODL {
         long invokePrim(Object arg0, Object arg1, double arg2);
     }
 
-    static public interface OODD {
+    interface OODD {
         double invokePrim(Object arg0, Object arg1, double arg2);
     }
 
-    static public interface OLOO {
+    interface OLOO {
         Object invokePrim(Object arg0, long arg1, Object arg2);
     }
 
-    static public interface OLOL {
+    interface OLOL {
         long invokePrim(Object arg0, long arg1, Object arg2);
     }
 
-    static public interface OLOD {
+    interface OLOD {
         double invokePrim(Object arg0, long arg1, Object arg2);
     }
 
-    static public interface OLLO {
+    interface OLLO {
         Object invokePrim(Object arg0, long arg1, long arg2);
     }
 
-    static public interface OLLL {
+    interface OLLL {
         long invokePrim(Object arg0, long arg1, long arg2);
     }
 
-    static public interface OLLD {
+    interface OLLD {
         double invokePrim(Object arg0, long arg1, long arg2);
     }
 
-    static public interface OLDO {
+    interface OLDO {
         Object invokePrim(Object arg0, long arg1, double arg2);
     }
 
-    static public interface OLDL {
+    interface OLDL {
         long invokePrim(Object arg0, long arg1, double arg2);
     }
 
-    static public interface OLDD {
+    interface OLDD {
         double invokePrim(Object arg0, long arg1, double arg2);
     }
 
-    static public interface ODOO {
+    interface ODOO {
         Object invokePrim(Object arg0, double arg1, Object arg2);
     }
 
-    static public interface ODOL {
+    interface ODOL {
         long invokePrim(Object arg0, double arg1, Object arg2);
     }
 
-    static public interface ODOD {
+    interface ODOD {
         double invokePrim(Object arg0, double arg1, Object arg2);
     }
 
-    static public interface ODLO {
+    interface ODLO {
         Object invokePrim(Object arg0, double arg1, long arg2);
     }
 
-    static public interface ODLL {
+    interface ODLL {
         long invokePrim(Object arg0, double arg1, long arg2);
     }
 
-    static public interface ODLD {
+    interface ODLD {
         double invokePrim(Object arg0, double arg1, long arg2);
     }
 
-    static public interface ODDO {
+    interface ODDO {
         Object invokePrim(Object arg0, double arg1, double arg2);
     }
 
-    static public interface ODDL {
+    interface ODDL {
         long invokePrim(Object arg0, double arg1, double arg2);
     }
 
-    static public interface ODDD {
+    interface ODDD {
         double invokePrim(Object arg0, double arg1, double arg2);
     }
 
-    static public interface LOOO {
+    interface LOOO {
         Object invokePrim(long arg0, Object arg1, Object arg2);
     }
 
-    static public interface LOOL {
+    interface LOOL {
         long invokePrim(long arg0, Object arg1, Object arg2);
     }
 
-    static public interface LOOD {
+    interface LOOD {
         double invokePrim(long arg0, Object arg1, Object arg2);
     }
 
-    static public interface LOLO {
+    interface LOLO {
         Object invokePrim(long arg0, Object arg1, long arg2);
     }
 
-    static public interface LOLL {
+    interface LOLL {
         long invokePrim(long arg0, Object arg1, long arg2);
     }
 
-    static public interface LOLD {
+    interface LOLD {
         double invokePrim(long arg0, Object arg1, long arg2);
     }
 
-    static public interface LODO {
+    interface LODO {
         Object invokePrim(long arg0, Object arg1, double arg2);
     }
 
-    static public interface LODL {
+    interface LODL {
         long invokePrim(long arg0, Object arg1, double arg2);
     }
 
-    static public interface LODD {
+    interface LODD {
         double invokePrim(long arg0, Object arg1, double arg2);
     }
 
-    static public interface LLOO {
+    interface LLOO {
         Object invokePrim(long arg0, long arg1, Object arg2);
     }
 
-    static public interface LLOL {
+    interface LLOL {
         long invokePrim(long arg0, long arg1, Object arg2);
     }
 
-    static public interface LLOD {
+    interface LLOD {
         double invokePrim(long arg0, long arg1, Object arg2);
     }
 
-    static public interface LLLO {
+    interface LLLO {
         Object invokePrim(long arg0, long arg1, long arg2);
     }
 
-    static public interface LLLL {
+    interface LLLL {
         long invokePrim(long arg0, long arg1, long arg2);
     }
 
-    static public interface LLLD {
+    interface LLLD {
         double invokePrim(long arg0, long arg1, long arg2);
     }
 
-    static public interface LLDO {
+    interface LLDO {
         Object invokePrim(long arg0, long arg1, double arg2);
     }
 
-    static public interface LLDL {
+    interface LLDL {
         long invokePrim(long arg0, long arg1, double arg2);
     }
 
-    static public interface LLDD {
+    interface LLDD {
         double invokePrim(long arg0, long arg1, double arg2);
     }
 
-    static public interface LDOO {
+    interface LDOO {
         Object invokePrim(long arg0, double arg1, Object arg2);
     }
 
-    static public interface LDOL {
+    interface LDOL {
         long invokePrim(long arg0, double arg1, Object arg2);
     }
 
-    static public interface LDOD {
+    interface LDOD {
         double invokePrim(long arg0, double arg1, Object arg2);
     }
 
-    static public interface LDLO {
+    interface LDLO {
         Object invokePrim(long arg0, double arg1, long arg2);
     }
 
-    static public interface LDLL {
+    interface LDLL {
         long invokePrim(long arg0, double arg1, long arg2);
     }
 
-    static public interface LDLD {
+    interface LDLD {
         double invokePrim(long arg0, double arg1, long arg2);
     }
 
-    static public interface LDDO {
+    interface LDDO {
         Object invokePrim(long arg0, double arg1, double arg2);
     }
 
-    static public interface LDDL {
+    interface LDDL {
         long invokePrim(long arg0, double arg1, double arg2);
     }
 
-    static public interface LDDD {
+    interface LDDD {
         double invokePrim(long arg0, double arg1, double arg2);
     }
 
-    static public interface DOOO {
+    interface DOOO {
         Object invokePrim(double arg0, Object arg1, Object arg2);
     }
 
-    static public interface DOOL {
+    interface DOOL {
         long invokePrim(double arg0, Object arg1, Object arg2);
     }
 
-    static public interface DOOD {
+    interface DOOD {
         double invokePrim(double arg0, Object arg1, Object arg2);
     }
 
-    static public interface DOLO {
+    interface DOLO {
         Object invokePrim(double arg0, Object arg1, long arg2);
     }
 
-    static public interface DOLL {
+    interface DOLL {
         long invokePrim(double arg0, Object arg1, long arg2);
     }
 
-    static public interface DOLD {
+    interface DOLD {
         double invokePrim(double arg0, Object arg1, long arg2);
     }
 
-    static public interface DODO {
+    interface DODO {
         Object invokePrim(double arg0, Object arg1, double arg2);
     }
 
-    static public interface DODL {
+    interface DODL {
         long invokePrim(double arg0, Object arg1, double arg2);
     }
 
-    static public interface DODD {
+    interface DODD {
         double invokePrim(double arg0, Object arg1, double arg2);
     }
 
-    static public interface DLOO {
+    interface DLOO {
         Object invokePrim(double arg0, long arg1, Object arg2);
     }
 
-    static public interface DLOL {
+    interface DLOL {
         long invokePrim(double arg0, long arg1, Object arg2);
     }
 
-    static public interface DLOD {
+    interface DLOD {
         double invokePrim(double arg0, long arg1, Object arg2);
     }
 
-    static public interface DLLO {
+    interface DLLO {
         Object invokePrim(double arg0, long arg1, long arg2);
     }
 
-    static public interface DLLL {
+    interface DLLL {
         long invokePrim(double arg0, long arg1, long arg2);
     }
 
-    static public interface DLLD {
+    interface DLLD {
         double invokePrim(double arg0, long arg1, long arg2);
     }
 
-    static public interface DLDO {
+    interface DLDO {
         Object invokePrim(double arg0, long arg1, double arg2);
     }
 
-    static public interface DLDL {
+    interface DLDL {
         long invokePrim(double arg0, long arg1, double arg2);
     }
 
-    static public interface DLDD {
+    interface DLDD {
         double invokePrim(double arg0, long arg1, double arg2);
     }
 
-    static public interface DDOO {
+    interface DDOO {
         Object invokePrim(double arg0, double arg1, Object arg2);
     }
 
-    static public interface DDOL {
+    interface DDOL {
         long invokePrim(double arg0, double arg1, Object arg2);
     }
 
-    static public interface DDOD {
+    interface DDOD {
         double invokePrim(double arg0, double arg1, Object arg2);
     }
 
-    static public interface DDLO {
+    interface DDLO {
         Object invokePrim(double arg0, double arg1, long arg2);
     }
 
-    static public interface DDLL {
+    interface DDLL {
         long invokePrim(double arg0, double arg1, long arg2);
     }
 
-    static public interface DDLD {
+    interface DDLD {
         double invokePrim(double arg0, double arg1, long arg2);
     }
 
-    static public interface DDDO {
+    interface DDDO {
         Object invokePrim(double arg0, double arg1, double arg2);
     }
 
-    static public interface DDDL {
+    interface DDDL {
         long invokePrim(double arg0, double arg1, double arg2);
     }
 
-    static public interface DDDD {
+    interface DDDD {
         double invokePrim(double arg0, double arg1, double arg2);
     }
 
-    static public interface OOOOL {
+    interface OOOOL {
         long invokePrim(Object arg0, Object arg1, Object arg2, Object arg3);
     }
 
-    static public interface OOOOD {
+    interface OOOOD {
         double invokePrim(Object arg0, Object arg1, Object arg2, Object arg3);
     }
 
-    static public interface OOOLO {
+    interface OOOLO {
         Object invokePrim(Object arg0, Object arg1, Object arg2, long arg3);
     }
 
-    static public interface OOOLL {
+    interface OOOLL {
         long invokePrim(Object arg0, Object arg1, Object arg2, long arg3);
     }
 
-    static public interface OOOLD {
+    interface OOOLD {
         double invokePrim(Object arg0, Object arg1, Object arg2, long arg3);
     }
 
-    static public interface OOODO {
+    interface OOODO {
         Object invokePrim(Object arg0, Object arg1, Object arg2, double arg3);
     }
 
-    static public interface OOODL {
+    interface OOODL {
         long invokePrim(Object arg0, Object arg1, Object arg2, double arg3);
     }
 
-    static public interface OOODD {
+    interface OOODD {
         double invokePrim(Object arg0, Object arg1, Object arg2, double arg3);
     }
 
-    static public interface OOLOO {
+    interface OOLOO {
         Object invokePrim(Object arg0, Object arg1, long arg2, Object arg3);
     }
 
-    static public interface OOLOL {
+    interface OOLOL {
         long invokePrim(Object arg0, Object arg1, long arg2, Object arg3);
     }
 
-    static public interface OOLOD {
+    interface OOLOD {
         double invokePrim(Object arg0, Object arg1, long arg2, Object arg3);
     }
 
-    static public interface OOLLO {
+    interface OOLLO {
         Object invokePrim(Object arg0, Object arg1, long arg2, long arg3);
     }
 
-    static public interface OOLLL {
+    interface OOLLL {
         long invokePrim(Object arg0, Object arg1, long arg2, long arg3);
     }
 
-    static public interface OOLLD {
+    interface OOLLD {
         double invokePrim(Object arg0, Object arg1, long arg2, long arg3);
     }
 
-    static public interface OOLDO {
+    interface OOLDO {
         Object invokePrim(Object arg0, Object arg1, long arg2, double arg3);
     }
 
-    static public interface OOLDL {
+    interface OOLDL {
         long invokePrim(Object arg0, Object arg1, long arg2, double arg3);
     }
 
-    static public interface OOLDD {
+    interface OOLDD {
         double invokePrim(Object arg0, Object arg1, long arg2, double arg3);
     }
 
-    static public interface OODOO {
+    interface OODOO {
         Object invokePrim(Object arg0, Object arg1, double arg2, Object arg3);
     }
 
-    static public interface OODOL {
+    interface OODOL {
         long invokePrim(Object arg0, Object arg1, double arg2, Object arg3);
     }
 
-    static public interface OODOD {
+    interface OODOD {
         double invokePrim(Object arg0, Object arg1, double arg2, Object arg3);
     }
 
-    static public interface OODLO {
+    interface OODLO {
         Object invokePrim(Object arg0, Object arg1, double arg2, long arg3);
     }
 
-    static public interface OODLL {
+    interface OODLL {
         long invokePrim(Object arg0, Object arg1, double arg2, long arg3);
     }
 
-    static public interface OODLD {
+    interface OODLD {
         double invokePrim(Object arg0, Object arg1, double arg2, long arg3);
     }
 
-    static public interface OODDO {
+    interface OODDO {
         Object invokePrim(Object arg0, Object arg1, double arg2, double arg3);
     }
 
-    static public interface OODDL {
+    interface OODDL {
         long invokePrim(Object arg0, Object arg1, double arg2, double arg3);
     }
 
-    static public interface OODDD {
+    interface OODDD {
         double invokePrim(Object arg0, Object arg1, double arg2, double arg3);
     }
 
-    static public interface OLOOO {
+    interface OLOOO {
         Object invokePrim(Object arg0, long arg1, Object arg2, Object arg3);
     }
 
-    static public interface OLOOL {
+    interface OLOOL {
         long invokePrim(Object arg0, long arg1, Object arg2, Object arg3);
     }
 
-    static public interface OLOOD {
+    interface OLOOD {
         double invokePrim(Object arg0, long arg1, Object arg2, Object arg3);
     }
 
-    static public interface OLOLO {
+    interface OLOLO {
         Object invokePrim(Object arg0, long arg1, Object arg2, long arg3);
     }
 
-    static public interface OLOLL {
+    interface OLOLL {
         long invokePrim(Object arg0, long arg1, Object arg2, long arg3);
     }
 
-    static public interface OLOLD {
+    interface OLOLD {
         double invokePrim(Object arg0, long arg1, Object arg2, long arg3);
     }
 
-    static public interface OLODO {
+    interface OLODO {
         Object invokePrim(Object arg0, long arg1, Object arg2, double arg3);
     }
 
-    static public interface OLODL {
+    interface OLODL {
         long invokePrim(Object arg0, long arg1, Object arg2, double arg3);
     }
 
-    static public interface OLODD {
+    interface OLODD {
         double invokePrim(Object arg0, long arg1, Object arg2, double arg3);
     }
 
-    static public interface OLLOO {
+    interface OLLOO {
         Object invokePrim(Object arg0, long arg1, long arg2, Object arg3);
     }
 
-    static public interface OLLOL {
+    interface OLLOL {
         long invokePrim(Object arg0, long arg1, long arg2, Object arg3);
     }
 
-    static public interface OLLOD {
+    interface OLLOD {
         double invokePrim(Object arg0, long arg1, long arg2, Object arg3);
     }
 
-    static public interface OLLLO {
+    interface OLLLO {
         Object invokePrim(Object arg0, long arg1, long arg2, long arg3);
     }
 
-    static public interface OLLLL {
+    interface OLLLL {
         long invokePrim(Object arg0, long arg1, long arg2, long arg3);
     }
 
-    static public interface OLLLD {
+    interface OLLLD {
         double invokePrim(Object arg0, long arg1, long arg2, long arg3);
     }
 
-    static public interface OLLDO {
+    interface OLLDO {
         Object invokePrim(Object arg0, long arg1, long arg2, double arg3);
     }
 
-    static public interface OLLDL {
+    interface OLLDL {
         long invokePrim(Object arg0, long arg1, long arg2, double arg3);
     }
 
-    static public interface OLLDD {
+    interface OLLDD {
         double invokePrim(Object arg0, long arg1, long arg2, double arg3);
     }
 
-    static public interface OLDOO {
+    interface OLDOO {
         Object invokePrim(Object arg0, long arg1, double arg2, Object arg3);
     }
 
-    static public interface OLDOL {
+    interface OLDOL {
         long invokePrim(Object arg0, long arg1, double arg2, Object arg3);
     }
 
-    static public interface OLDOD {
+    interface OLDOD {
         double invokePrim(Object arg0, long arg1, double arg2, Object arg3);
     }
 
-    static public interface OLDLO {
+    interface OLDLO {
         Object invokePrim(Object arg0, long arg1, double arg2, long arg3);
     }
 
-    static public interface OLDLL {
+    interface OLDLL {
         long invokePrim(Object arg0, long arg1, double arg2, long arg3);
     }
 
-    static public interface OLDLD {
+    interface OLDLD {
         double invokePrim(Object arg0, long arg1, double arg2, long arg3);
     }
 
-    static public interface OLDDO {
+    interface OLDDO {
         Object invokePrim(Object arg0, long arg1, double arg2, double arg3);
     }
 
-    static public interface OLDDL {
+    interface OLDDL {
         long invokePrim(Object arg0, long arg1, double arg2, double arg3);
     }
 
-    static public interface OLDDD {
+    interface OLDDD {
         double invokePrim(Object arg0, long arg1, double arg2, double arg3);
     }
 
-    static public interface ODOOO {
+    interface ODOOO {
         Object invokePrim(Object arg0, double arg1, Object arg2, Object arg3);
     }
 
-    static public interface ODOOL {
+    interface ODOOL {
         long invokePrim(Object arg0, double arg1, Object arg2, Object arg3);
     }
 
-    static public interface ODOOD {
+    interface ODOOD {
         double invokePrim(Object arg0, double arg1, Object arg2, Object arg3);
     }
 
-    static public interface ODOLO {
+    interface ODOLO {
         Object invokePrim(Object arg0, double arg1, Object arg2, long arg3);
     }
 
-    static public interface ODOLL {
+    interface ODOLL {
         long invokePrim(Object arg0, double arg1, Object arg2, long arg3);
     }
 
-    static public interface ODOLD {
+    interface ODOLD {
         double invokePrim(Object arg0, double arg1, Object arg2, long arg3);
     }
 
-    static public interface ODODO {
+    interface ODODO {
         Object invokePrim(Object arg0, double arg1, Object arg2, double arg3);
     }
 
-    static public interface ODODL {
+    interface ODODL {
         long invokePrim(Object arg0, double arg1, Object arg2, double arg3);
     }
 
-    static public interface ODODD {
+    interface ODODD {
         double invokePrim(Object arg0, double arg1, Object arg2, double arg3);
     }
 
-    static public interface ODLOO {
+    interface ODLOO {
         Object invokePrim(Object arg0, double arg1, long arg2, Object arg3);
     }
 
-    static public interface ODLOL {
+    interface ODLOL {
         long invokePrim(Object arg0, double arg1, long arg2, Object arg3);
     }
 
-    static public interface ODLOD {
+    interface ODLOD {
         double invokePrim(Object arg0, double arg1, long arg2, Object arg3);
     }
 
-    static public interface ODLLO {
+    interface ODLLO {
         Object invokePrim(Object arg0, double arg1, long arg2, long arg3);
     }
 
-    static public interface ODLLL {
+    interface ODLLL {
         long invokePrim(Object arg0, double arg1, long arg2, long arg3);
     }
 
-    static public interface ODLLD {
+    interface ODLLD {
         double invokePrim(Object arg0, double arg1, long arg2, long arg3);
     }
 
-    static public interface ODLDO {
+    interface ODLDO {
         Object invokePrim(Object arg0, double arg1, long arg2, double arg3);
     }
 
-    static public interface ODLDL {
+    interface ODLDL {
         long invokePrim(Object arg0, double arg1, long arg2, double arg3);
     }
 
-    static public interface ODLDD {
+    interface ODLDD {
         double invokePrim(Object arg0, double arg1, long arg2, double arg3);
     }
 
-    static public interface ODDOO {
+    interface ODDOO {
         Object invokePrim(Object arg0, double arg1, double arg2, Object arg3);
     }
 
-    static public interface ODDOL {
+    interface ODDOL {
         long invokePrim(Object arg0, double arg1, double arg2, Object arg3);
     }
 
-    static public interface ODDOD {
+    interface ODDOD {
         double invokePrim(Object arg0, double arg1, double arg2, Object arg3);
     }
 
-    static public interface ODDLO {
+    interface ODDLO {
         Object invokePrim(Object arg0, double arg1, double arg2, long arg3);
     }
 
-    static public interface ODDLL {
+    interface ODDLL {
         long invokePrim(Object arg0, double arg1, double arg2, long arg3);
     }
 
-    static public interface ODDLD {
+    interface ODDLD {
         double invokePrim(Object arg0, double arg1, double arg2, long arg3);
     }
 
-    static public interface ODDDO {
+    interface ODDDO {
         Object invokePrim(Object arg0, double arg1, double arg2, double arg3);
     }
 
-    static public interface ODDDL {
+    interface ODDDL {
         long invokePrim(Object arg0, double arg1, double arg2, double arg3);
     }
 
-    static public interface ODDDD {
+    interface ODDDD {
         double invokePrim(Object arg0, double arg1, double arg2, double arg3);
     }
 
-    static public interface LOOOO {
+    interface LOOOO {
         Object invokePrim(long arg0, Object arg1, Object arg2, Object arg3);
     }
 
-    static public interface LOOOL {
+    interface LOOOL {
         long invokePrim(long arg0, Object arg1, Object arg2, Object arg3);
     }
 
-    static public interface LOOOD {
+    interface LOOOD {
         double invokePrim(long arg0, Object arg1, Object arg2, Object arg3);
     }
 
-    static public interface LOOLO {
+    interface LOOLO {
         Object invokePrim(long arg0, Object arg1, Object arg2, long arg3);
     }
 
-    static public interface LOOLL {
+    interface LOOLL {
         long invokePrim(long arg0, Object arg1, Object arg2, long arg3);
     }
 
-    static public interface LOOLD {
+    interface LOOLD {
         double invokePrim(long arg0, Object arg1, Object arg2, long arg3);
     }
 
-    static public interface LOODO {
+    interface LOODO {
         Object invokePrim(long arg0, Object arg1, Object arg2, double arg3);
     }
 
-    static public interface LOODL {
+    interface LOODL {
         long invokePrim(long arg0, Object arg1, Object arg2, double arg3);
     }
 
-    static public interface LOODD {
+    interface LOODD {
         double invokePrim(long arg0, Object arg1, Object arg2, double arg3);
     }
 
-    static public interface LOLOO {
+    interface LOLOO {
         Object invokePrim(long arg0, Object arg1, long arg2, Object arg3);
     }
 
-    static public interface LOLOL {
+    interface LOLOL {
         long invokePrim(long arg0, Object arg1, long arg2, Object arg3);
     }
 
-    static public interface LOLOD {
+    interface LOLOD {
         double invokePrim(long arg0, Object arg1, long arg2, Object arg3);
     }
 
-    static public interface LOLLO {
+    interface LOLLO {
         Object invokePrim(long arg0, Object arg1, long arg2, long arg3);
     }
 
-    static public interface LOLLL {
+    interface LOLLL {
         long invokePrim(long arg0, Object arg1, long arg2, long arg3);
     }
 
-    static public interface LOLLD {
+    interface LOLLD {
         double invokePrim(long arg0, Object arg1, long arg2, long arg3);
     }
 
-    static public interface LOLDO {
+    interface LOLDO {
         Object invokePrim(long arg0, Object arg1, long arg2, double arg3);
     }
 
-    static public interface LOLDL {
+    interface LOLDL {
         long invokePrim(long arg0, Object arg1, long arg2, double arg3);
     }
 
-    static public interface LOLDD {
+    interface LOLDD {
         double invokePrim(long arg0, Object arg1, long arg2, double arg3);
     }
 
-    static public interface LODOO {
+    interface LODOO {
         Object invokePrim(long arg0, Object arg1, double arg2, Object arg3);
     }
 
-    static public interface LODOL {
+    interface LODOL {
         long invokePrim(long arg0, Object arg1, double arg2, Object arg3);
     }
 
-    static public interface LODOD {
+    interface LODOD {
         double invokePrim(long arg0, Object arg1, double arg2, Object arg3);
     }
 
-    static public interface LODLO {
+    interface LODLO {
         Object invokePrim(long arg0, Object arg1, double arg2, long arg3);
     }
 
-    static public interface LODLL {
+    interface LODLL {
         long invokePrim(long arg0, Object arg1, double arg2, long arg3);
     }
 
-    static public interface LODLD {
+    interface LODLD {
         double invokePrim(long arg0, Object arg1, double arg2, long arg3);
     }
 
-    static public interface LODDO {
+    interface LODDO {
         Object invokePrim(long arg0, Object arg1, double arg2, double arg3);
     }
 
-    static public interface LODDL {
+    interface LODDL {
         long invokePrim(long arg0, Object arg1, double arg2, double arg3);
     }
 
-    static public interface LODDD {
+    interface LODDD {
         double invokePrim(long arg0, Object arg1, double arg2, double arg3);
     }
 
-    static public interface LLOOO {
+    interface LLOOO {
         Object invokePrim(long arg0, long arg1, Object arg2, Object arg3);
     }
 
-    static public interface LLOOL {
+    interface LLOOL {
         long invokePrim(long arg0, long arg1, Object arg2, Object arg3);
     }
 
-    static public interface LLOOD {
+    interface LLOOD {
         double invokePrim(long arg0, long arg1, Object arg2, Object arg3);
     }
 
-    static public interface LLOLO {
+    interface LLOLO {
         Object invokePrim(long arg0, long arg1, Object arg2, long arg3);
     }
 
-    static public interface LLOLL {
+    interface LLOLL {
         long invokePrim(long arg0, long arg1, Object arg2, long arg3);
     }
 
-    static public interface LLOLD {
+    interface LLOLD {
         double invokePrim(long arg0, long arg1, Object arg2, long arg3);
     }
 
-    static public interface LLODO {
+    interface LLODO {
         Object invokePrim(long arg0, long arg1, Object arg2, double arg3);
     }
 
-    static public interface LLODL {
+    interface LLODL {
         long invokePrim(long arg0, long arg1, Object arg2, double arg3);
     }
 
-    static public interface LLODD {
+    interface LLODD {
         double invokePrim(long arg0, long arg1, Object arg2, double arg3);
     }
 
-    static public interface LLLOO {
+    interface LLLOO {
         Object invokePrim(long arg0, long arg1, long arg2, Object arg3);
     }
 
-    static public interface LLLOL {
+    interface LLLOL {
         long invokePrim(long arg0, long arg1, long arg2, Object arg3);
     }
 
-    static public interface LLLOD {
+    interface LLLOD {
         double invokePrim(long arg0, long arg1, long arg2, Object arg3);
     }
 
-    static public interface LLLLO {
+    interface LLLLO {
         Object invokePrim(long arg0, long arg1, long arg2, long arg3);
     }
 
-    static public interface LLLLL {
+    interface LLLLL {
         long invokePrim(long arg0, long arg1, long arg2, long arg3);
     }
 
-    static public interface LLLLD {
+    interface LLLLD {
         double invokePrim(long arg0, long arg1, long arg2, long arg3);
     }
 
-    static public interface LLLDO {
+    interface LLLDO {
         Object invokePrim(long arg0, long arg1, long arg2, double arg3);
     }
 
-    static public interface LLLDL {
+    interface LLLDL {
         long invokePrim(long arg0, long arg1, long arg2, double arg3);
     }
 
-    static public interface LLLDD {
+    interface LLLDD {
         double invokePrim(long arg0, long arg1, long arg2, double arg3);
     }
 
-    static public interface LLDOO {
+    interface LLDOO {
         Object invokePrim(long arg0, long arg1, double arg2, Object arg3);
     }
 
-    static public interface LLDOL {
+    interface LLDOL {
         long invokePrim(long arg0, long arg1, double arg2, Object arg3);
     }
 
-    static public interface LLDOD {
+    interface LLDOD {
         double invokePrim(long arg0, long arg1, double arg2, Object arg3);
     }
 
-    static public interface LLDLO {
+    interface LLDLO {
         Object invokePrim(long arg0, long arg1, double arg2, long arg3);
     }
 
-    static public interface LLDLL {
+    interface LLDLL {
         long invokePrim(long arg0, long arg1, double arg2, long arg3);
     }
 
-    static public interface LLDLD {
+    interface LLDLD {
         double invokePrim(long arg0, long arg1, double arg2, long arg3);
     }
 
-    static public interface LLDDO {
+    interface LLDDO {
         Object invokePrim(long arg0, long arg1, double arg2, double arg3);
     }
 
-    static public interface LLDDL {
+    interface LLDDL {
         long invokePrim(long arg0, long arg1, double arg2, double arg3);
     }
 
-    static public interface LLDDD {
+    interface LLDDD {
         double invokePrim(long arg0, long arg1, double arg2, double arg3);
     }
 
-    static public interface LDOOO {
+    interface LDOOO {
         Object invokePrim(long arg0, double arg1, Object arg2, Object arg3);
     }
 
-    static public interface LDOOL {
+    interface LDOOL {
         long invokePrim(long arg0, double arg1, Object arg2, Object arg3);
     }
 
-    static public interface LDOOD {
+    interface LDOOD {
         double invokePrim(long arg0, double arg1, Object arg2, Object arg3);
     }
 
-    static public interface LDOLO {
+    interface LDOLO {
         Object invokePrim(long arg0, double arg1, Object arg2, long arg3);
     }
 
-    static public interface LDOLL {
+    interface LDOLL {
         long invokePrim(long arg0, double arg1, Object arg2, long arg3);
     }
 
-    static public interface LDOLD {
+    interface LDOLD {
         double invokePrim(long arg0, double arg1, Object arg2, long arg3);
     }
 
-    static public interface LDODO {
+    interface LDODO {
         Object invokePrim(long arg0, double arg1, Object arg2, double arg3);
     }
 
-    static public interface LDODL {
+    interface LDODL {
         long invokePrim(long arg0, double arg1, Object arg2, double arg3);
     }
 
-    static public interface LDODD {
+    interface LDODD {
         double invokePrim(long arg0, double arg1, Object arg2, double arg3);
     }
 
-    static public interface LDLOO {
+    interface LDLOO {
         Object invokePrim(long arg0, double arg1, long arg2, Object arg3);
     }
 
-    static public interface LDLOL {
+    interface LDLOL {
         long invokePrim(long arg0, double arg1, long arg2, Object arg3);
     }
 
-    static public interface LDLOD {
+    interface LDLOD {
         double invokePrim(long arg0, double arg1, long arg2, Object arg3);
     }
 
-    static public interface LDLLO {
+    interface LDLLO {
         Object invokePrim(long arg0, double arg1, long arg2, long arg3);
     }
 
-    static public interface LDLLL {
+    interface LDLLL {
         long invokePrim(long arg0, double arg1, long arg2, long arg3);
     }
 
-    static public interface LDLLD {
+    interface LDLLD {
         double invokePrim(long arg0, double arg1, long arg2, long arg3);
     }
 
-    static public interface LDLDO {
+    interface LDLDO {
         Object invokePrim(long arg0, double arg1, long arg2, double arg3);
     }
 
-    static public interface LDLDL {
+    interface LDLDL {
         long invokePrim(long arg0, double arg1, long arg2, double arg3);
     }
 
-    static public interface LDLDD {
+    interface LDLDD {
         double invokePrim(long arg0, double arg1, long arg2, double arg3);
     }
 
-    static public interface LDDOO {
+    interface LDDOO {
         Object invokePrim(long arg0, double arg1, double arg2, Object arg3);
     }
 
-    static public interface LDDOL {
+    interface LDDOL {
         long invokePrim(long arg0, double arg1, double arg2, Object arg3);
     }
 
-    static public interface LDDOD {
+    interface LDDOD {
         double invokePrim(long arg0, double arg1, double arg2, Object arg3);
     }
 
-    static public interface LDDLO {
+    interface LDDLO {
         Object invokePrim(long arg0, double arg1, double arg2, long arg3);
     }
 
-    static public interface LDDLL {
+    interface LDDLL {
         long invokePrim(long arg0, double arg1, double arg2, long arg3);
     }
 
-    static public interface LDDLD {
+    interface LDDLD {
         double invokePrim(long arg0, double arg1, double arg2, long arg3);
     }
 
-    static public interface LDDDO {
+    interface LDDDO {
         Object invokePrim(long arg0, double arg1, double arg2, double arg3);
     }
 
-    static public interface LDDDL {
+    interface LDDDL {
         long invokePrim(long arg0, double arg1, double arg2, double arg3);
     }
 
-    static public interface LDDDD {
+    interface LDDDD {
         double invokePrim(long arg0, double arg1, double arg2, double arg3);
     }
 
-    static public interface DOOOO {
+    interface DOOOO {
         Object invokePrim(double arg0, Object arg1, Object arg2, Object arg3);
     }
 
-    static public interface DOOOL {
+    interface DOOOL {
         long invokePrim(double arg0, Object arg1, Object arg2, Object arg3);
     }
 
-    static public interface DOOOD {
+    interface DOOOD {
         double invokePrim(double arg0, Object arg1, Object arg2, Object arg3);
     }
 
-    static public interface DOOLO {
+    interface DOOLO {
         Object invokePrim(double arg0, Object arg1, Object arg2, long arg3);
     }
 
-    static public interface DOOLL {
+    interface DOOLL {
         long invokePrim(double arg0, Object arg1, Object arg2, long arg3);
     }
 
-    static public interface DOOLD {
+    interface DOOLD {
         double invokePrim(double arg0, Object arg1, Object arg2, long arg3);
     }
 
-    static public interface DOODO {
+    interface DOODO {
         Object invokePrim(double arg0, Object arg1, Object arg2, double arg3);
     }
 
-    static public interface DOODL {
+    interface DOODL {
         long invokePrim(double arg0, Object arg1, Object arg2, double arg3);
     }
 
-    static public interface DOODD {
+    interface DOODD {
         double invokePrim(double arg0, Object arg1, Object arg2, double arg3);
     }
 
-    static public interface DOLOO {
+    interface DOLOO {
         Object invokePrim(double arg0, Object arg1, long arg2, Object arg3);
     }
 
-    static public interface DOLOL {
+    interface DOLOL {
         long invokePrim(double arg0, Object arg1, long arg2, Object arg3);
     }
 
-    static public interface DOLOD {
+    interface DOLOD {
         double invokePrim(double arg0, Object arg1, long arg2, Object arg3);
     }
 
-    static public interface DOLLO {
+    interface DOLLO {
         Object invokePrim(double arg0, Object arg1, long arg2, long arg3);
     }
 
-    static public interface DOLLL {
+    interface DOLLL {
         long invokePrim(double arg0, Object arg1, long arg2, long arg3);
     }
 
-    static public interface DOLLD {
+    interface DOLLD {
         double invokePrim(double arg0, Object arg1, long arg2, long arg3);
     }
 
-    static public interface DOLDO {
+    interface DOLDO {
         Object invokePrim(double arg0, Object arg1, long arg2, double arg3);
     }
 
-    static public interface DOLDL {
+    interface DOLDL {
         long invokePrim(double arg0, Object arg1, long arg2, double arg3);
     }
 
-    static public interface DOLDD {
+    interface DOLDD {
         double invokePrim(double arg0, Object arg1, long arg2, double arg3);
     }
 
-    static public interface DODOO {
+    interface DODOO {
         Object invokePrim(double arg0, Object arg1, double arg2, Object arg3);
     }
 
-    static public interface DODOL {
+    interface DODOL {
         long invokePrim(double arg0, Object arg1, double arg2, Object arg3);
     }
 
-    static public interface DODOD {
+    interface DODOD {
         double invokePrim(double arg0, Object arg1, double arg2, Object arg3);
     }
 
-    static public interface DODLO {
+    interface DODLO {
         Object invokePrim(double arg0, Object arg1, double arg2, long arg3);
     }
 
-    static public interface DODLL {
+    interface DODLL {
         long invokePrim(double arg0, Object arg1, double arg2, long arg3);
     }
 
-    static public interface DODLD {
+    interface DODLD {
         double invokePrim(double arg0, Object arg1, double arg2, long arg3);
     }
 
-    static public interface DODDO {
+    interface DODDO {
         Object invokePrim(double arg0, Object arg1, double arg2, double arg3);
     }
 
-    static public interface DODDL {
+    interface DODDL {
         long invokePrim(double arg0, Object arg1, double arg2, double arg3);
     }
 
-    static public interface DODDD {
+    interface DODDD {
         double invokePrim(double arg0, Object arg1, double arg2, double arg3);
     }
 
-    static public interface DLOOO {
+    interface DLOOO {
         Object invokePrim(double arg0, long arg1, Object arg2, Object arg3);
     }
 
-    static public interface DLOOL {
+    interface DLOOL {
         long invokePrim(double arg0, long arg1, Object arg2, Object arg3);
     }
 
-    static public interface DLOOD {
+    interface DLOOD {
         double invokePrim(double arg0, long arg1, Object arg2, Object arg3);
     }
 
-    static public interface DLOLO {
+    interface DLOLO {
         Object invokePrim(double arg0, long arg1, Object arg2, long arg3);
     }
 
-    static public interface DLOLL {
+    interface DLOLL {
         long invokePrim(double arg0, long arg1, Object arg2, long arg3);
     }
 
-    static public interface DLOLD {
+    interface DLOLD {
         double invokePrim(double arg0, long arg1, Object arg2, long arg3);
     }
 
-    static public interface DLODO {
+    interface DLODO {
         Object invokePrim(double arg0, long arg1, Object arg2, double arg3);
     }
 
-    static public interface DLODL {
+    interface DLODL {
         long invokePrim(double arg0, long arg1, Object arg2, double arg3);
     }
 
-    static public interface DLODD {
+    interface DLODD {
         double invokePrim(double arg0, long arg1, Object arg2, double arg3);
     }
 
-    static public interface DLLOO {
+    interface DLLOO {
         Object invokePrim(double arg0, long arg1, long arg2, Object arg3);
     }
 
-    static public interface DLLOL {
+    interface DLLOL {
         long invokePrim(double arg0, long arg1, long arg2, Object arg3);
     }
 
-    static public interface DLLOD {
+    interface DLLOD {
         double invokePrim(double arg0, long arg1, long arg2, Object arg3);
     }
 
-    static public interface DLLLO {
+    interface DLLLO {
         Object invokePrim(double arg0, long arg1, long arg2, long arg3);
     }
 
-    static public interface DLLLL {
+    interface DLLLL {
         long invokePrim(double arg0, long arg1, long arg2, long arg3);
     }
 
-    static public interface DLLLD {
+    interface DLLLD {
         double invokePrim(double arg0, long arg1, long arg2, long arg3);
     }
 
-    static public interface DLLDO {
+    interface DLLDO {
         Object invokePrim(double arg0, long arg1, long arg2, double arg3);
     }
 
-    static public interface DLLDL {
+    interface DLLDL {
         long invokePrim(double arg0, long arg1, long arg2, double arg3);
     }
 
-    static public interface DLLDD {
+    interface DLLDD {
         double invokePrim(double arg0, long arg1, long arg2, double arg3);
     }
 
-    static public interface DLDOO {
+    interface DLDOO {
         Object invokePrim(double arg0, long arg1, double arg2, Object arg3);
     }
 
-    static public interface DLDOL {
+    interface DLDOL {
         long invokePrim(double arg0, long arg1, double arg2, Object arg3);
     }
 
-    static public interface DLDOD {
+    interface DLDOD {
         double invokePrim(double arg0, long arg1, double arg2, Object arg3);
     }
 
-    static public interface DLDLO {
+    interface DLDLO {
         Object invokePrim(double arg0, long arg1, double arg2, long arg3);
     }
 
-    static public interface DLDLL {
+    interface DLDLL {
         long invokePrim(double arg0, long arg1, double arg2, long arg3);
     }
 
-    static public interface DLDLD {
+    interface DLDLD {
         double invokePrim(double arg0, long arg1, double arg2, long arg3);
     }
 
-    static public interface DLDDO {
+    interface DLDDO {
         Object invokePrim(double arg0, long arg1, double arg2, double arg3);
     }
 
-    static public interface DLDDL {
+    interface DLDDL {
         long invokePrim(double arg0, long arg1, double arg2, double arg3);
     }
 
-    static public interface DLDDD {
+    interface DLDDD {
         double invokePrim(double arg0, long arg1, double arg2, double arg3);
     }
 
-    static public interface DDOOO {
+    interface DDOOO {
         Object invokePrim(double arg0, double arg1, Object arg2, Object arg3);
     }
 
-    static public interface DDOOL {
+    interface DDOOL {
         long invokePrim(double arg0, double arg1, Object arg2, Object arg3);
     }
 
-    static public interface DDOOD {
+    interface DDOOD {
         double invokePrim(double arg0, double arg1, Object arg2, Object arg3);
     }
 
-    static public interface DDOLO {
+    interface DDOLO {
         Object invokePrim(double arg0, double arg1, Object arg2, long arg3);
     }
 
-    static public interface DDOLL {
+    interface DDOLL {
         long invokePrim(double arg0, double arg1, Object arg2, long arg3);
     }
 
-    static public interface DDOLD {
+    interface DDOLD {
         double invokePrim(double arg0, double arg1, Object arg2, long arg3);
     }
 
-    static public interface DDODO {
+    interface DDODO {
         Object invokePrim(double arg0, double arg1, Object arg2, double arg3);
     }
 
-    static public interface DDODL {
+    interface DDODL {
         long invokePrim(double arg0, double arg1, Object arg2, double arg3);
     }
 
-    static public interface DDODD {
+    interface DDODD {
         double invokePrim(double arg0, double arg1, Object arg2, double arg3);
     }
 
-    static public interface DDLOO {
+    interface DDLOO {
         Object invokePrim(double arg0, double arg1, long arg2, Object arg3);
     }
 
-    static public interface DDLOL {
+    interface DDLOL {
         long invokePrim(double arg0, double arg1, long arg2, Object arg3);
     }
 
-    static public interface DDLOD {
+    interface DDLOD {
         double invokePrim(double arg0, double arg1, long arg2, Object arg3);
     }
 
-    static public interface DDLLO {
+    interface DDLLO {
         Object invokePrim(double arg0, double arg1, long arg2, long arg3);
     }
 
-    static public interface DDLLL {
+    interface DDLLL {
         long invokePrim(double arg0, double arg1, long arg2, long arg3);
     }
 
-    static public interface DDLLD {
+    interface DDLLD {
         double invokePrim(double arg0, double arg1, long arg2, long arg3);
     }
 
-    static public interface DDLDO {
+    interface DDLDO {
         Object invokePrim(double arg0, double arg1, long arg2, double arg3);
     }
 
-    static public interface DDLDL {
+    interface DDLDL {
         long invokePrim(double arg0, double arg1, long arg2, double arg3);
     }
 
-    static public interface DDLDD {
+    interface DDLDD {
         double invokePrim(double arg0, double arg1, long arg2, double arg3);
     }
 
-    static public interface DDDOO {
+    interface DDDOO {
         Object invokePrim(double arg0, double arg1, double arg2, Object arg3);
     }
 
-    static public interface DDDOL {
+    interface DDDOL {
         long invokePrim(double arg0, double arg1, double arg2, Object arg3);
     }
 
-    static public interface DDDOD {
+    interface DDDOD {
         double invokePrim(double arg0, double arg1, double arg2, Object arg3);
     }
 
-    static public interface DDDLO {
+    interface DDDLO {
         Object invokePrim(double arg0, double arg1, double arg2, long arg3);
     }
 
-    static public interface DDDLL {
+    interface DDDLL {
         long invokePrim(double arg0, double arg1, double arg2, long arg3);
     }
 
-    static public interface DDDLD {
+    interface DDDLD {
         double invokePrim(double arg0, double arg1, double arg2, long arg3);
     }
 
-    static public interface DDDDO {
+    interface DDDDO {
         Object invokePrim(double arg0, double arg1, double arg2, double arg3);
     }
 
-    static public interface DDDDL {
+    interface DDDDL {
         long invokePrim(double arg0, double arg1, double arg2, double arg3);
     }
 
-    static public interface DDDDD {
+    interface DDDDD {
         double invokePrim(double arg0, double arg1, double arg2, double arg3);
     }
 }
