@@ -40,7 +40,7 @@ public class Util {
 
     static EquivPred equivNull = (k1, k2) -> k2 == null;
 
-    static EquivPred equivEquals = (k1, k2) -> k1.equals(k2);
+    static EquivPred equivEquals = Object::equals;
 
     static EquivPred equivNumber = (k1, k2) -> {
         if (k2 instanceof Number)

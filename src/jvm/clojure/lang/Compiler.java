@@ -3709,9 +3709,13 @@ public class Compiler implements Opcodes {
                     methods = RT.conj(methods, variadicMethod);
 
                 if (fn.canBeDirect) {
-                    ((Collection<FnMethod>) methods).stream().filter(fm -> fm.locals != null).forEach(fm -> {
-                        ((Collection<LocalBinding>) RT.keys(fm.locals)).stream().filter(lb -> lb.isArg).forEach(lb -> lb.idx -= 1);
-                    });
+                    ((Collection<FnMethod>) methods).stream()
+                            .filter(fm ->
+                                    fm.locals != null)
+                            .forEach(fm ->
+                                    ((Collection<LocalBinding>) RT.keys(fm.locals))
+                                            .stream().filter(lb -> lb.isArg)
+                                            .forEach(lb -> lb.idx -= 1));
                 }
 
                 fn.methods = methods;
@@ -4068,7 +4072,7 @@ public class Compiler implements Opcodes {
                 } else {
                     //todo - only enable this non-private+writability for letfns where we need it
                     if (lb.getPrimitiveType() != null)
-                        cv.visitField(0 + (isVolatile(lb) ? ACC_VOLATILE : 0)
+                        cv.visitField((isVolatile(lb) ? ACC_VOLATILE : 0)
                                 , lb.name, Type.getType(lb.getPrimitiveType()).getDescriptor(),
                                 null, null);
                     else
