@@ -172,7 +172,7 @@ final class Frame {
     /**
      * The TOP type. This is a BASE type.
      */
-    static final int TOP = BASE | 0;
+    static final int TOP = BASE;
 
     /**
      * The BOOLEAN type. This is a BASE type mainly used for array types.

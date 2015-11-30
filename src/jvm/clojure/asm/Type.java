@@ -105,37 +105,37 @@ public class Type {
      * The <tt>void</tt> type.
      */
     public static final Type VOID_TYPE = new Type(VOID, null, ('V' << 24)
-            | (5 << 16) | (0 << 8) | 0, 1);
+            | (5 << 16) | 0, 1);
 
     /**
      * The <tt>boolean</tt> type.
      */
     public static final Type BOOLEAN_TYPE = new Type(BOOLEAN, null, ('Z' << 24)
-            | (0 << 16) | (5 << 8) | 1, 1);
+            | (5 << 8) | 1, 1);
 
     /**
      * The <tt>char</tt> type.
      */
     public static final Type CHAR_TYPE = new Type(CHAR, null, ('C' << 24)
-            | (0 << 16) | (6 << 8) | 1, 1);
+            | (6 << 8) | 1, 1);
 
     /**
      * The <tt>byte</tt> type.
      */
     public static final Type BYTE_TYPE = new Type(BYTE, null, ('B' << 24)
-            | (0 << 16) | (5 << 8) | 1, 1);
+            | (5 << 8) | 1, 1);
 
     /**
      * The <tt>short</tt> type.
      */
     public static final Type SHORT_TYPE = new Type(SHORT, null, ('S' << 24)
-            | (0 << 16) | (7 << 8) | 1, 1);
+            | (7 << 8) | 1, 1);
 
     /**
      * The <tt>int</tt> type.
      */
     public static final Type INT_TYPE = new Type(INT, null, ('I' << 24)
-            | (0 << 16) | (0 << 8) | 1, 1);
+            | (0) | 1, 1);
 
     /**
      * The <tt>float</tt> type.
