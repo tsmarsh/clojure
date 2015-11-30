@@ -4157,8 +4157,7 @@ public class Compiler implements Opcodes {
                 //ctor that takes closed-overs and inits base + fields
                 Type[] ctorTypes = ctorTypes();
                 Type[] altCtorTypes = new Type[ctorTypes.length - altCtorDrops];
-                for (int i = 0; i < altCtorTypes.length; i++)
-                    altCtorTypes[i] = ctorTypes[i];
+                System.arraycopy(ctorTypes, 0, altCtorTypes, 0, altCtorTypes.length);
                 Method alt = new Method("<init>", Type.VOID_TYPE, altCtorTypes);
                 ctorgen = new GeneratorAdapter(ACC_PUBLIC,
                         alt,
@@ -4181,8 +4180,7 @@ public class Compiler implements Opcodes {
                 //ctor that takes closed-overs but not meta
                 Type[] ctorTypes = ctorTypes();
                 Type[] noMetaCtorTypes = new Type[ctorTypes.length - 1];
-                for (int i = 1; i < ctorTypes.length; i++)
-                    noMetaCtorTypes[i - 1] = ctorTypes[i];
+                System.arraycopy(ctorTypes, 1, noMetaCtorTypes, 0, ctorTypes.length - 1);
                 Method alt = new Method("<init>", Type.VOID_TYPE, noMetaCtorTypes);
                 ctorgen = new GeneratorAdapter(ACC_PUBLIC,
                         alt,
@@ -7185,8 +7183,7 @@ public class Compiler implements Opcodes {
             if (ret.altCtorDrops > 0) {
                 Type[] ctorTypes = ret.ctorTypes();
                 Type[] altCtorTypes = new Type[ctorTypes.length - ret.altCtorDrops];
-                for (int i = 0; i < altCtorTypes.length; i++)
-                    altCtorTypes[i] = ctorTypes[i];
+                System.arraycopy(ctorTypes, 0, altCtorTypes, 0, altCtorTypes.length);
                 Method alt = new Method("<init>", Type.VOID_TYPE, altCtorTypes);
                 ctorgen = new GeneratorAdapter(ACC_PUBLIC,
                         alt,
