@@ -1013,9 +1013,7 @@ public class Numbers {
 
     static public enum Category {INTEGER, FLOATING, DECIMAL, RATIO}
 
-    ;
-
-    static Ops ops(Object x) {
+	static Ops ops(Object x) {
         Class xc = x.getClass();
 
         if (xc == Long.class)

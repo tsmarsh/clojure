@@ -336,7 +336,6 @@ public class Compiler implements Opcodes {
     private class Recur {
     }
 
-    ;
     static final public Class RECUR_CLASS = Recur.class;
 
     interface Expr {
@@ -4753,7 +4752,7 @@ public class Compiler implements Opcodes {
     }
 
     enum PATHTYPE {
-        PATH, BRANCH;
+        PATH, BRANCH
     }
 
     static class PathNode {

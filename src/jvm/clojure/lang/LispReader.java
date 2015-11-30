@@ -1288,8 +1288,6 @@ static class CtorReader extends AFn{
             }
         }
 
-        ;
-
         private static void checkConditionalAllowed(Object opts) {
             IPersistentMap mopts = (IPersistentMap) opts;
             if (!(opts != null && (COND_ALLOW.equals(mopts.valAt(OPT_READ_COND)) ||

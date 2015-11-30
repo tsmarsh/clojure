@@ -129,7 +129,6 @@ public class PersistentList extends ASeq implements IPersistentList, IReduce, Li
         for (ISeq s = next(); s != null; s = s.next()) {
             ret = f.invoke(ret, s.first());
             if (RT.isReduced(ret)) return ((IDeref) ret).deref();
-            ;
         }
         return ret;
     }
