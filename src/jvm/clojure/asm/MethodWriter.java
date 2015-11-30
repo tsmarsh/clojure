@@ -463,7 +463,7 @@ class MethodWriter extends MethodVisitor {
 
     @Override
     public AnnotationVisitor visitAnnotationDefault() {
-        if (!ClassReader.ANNOTATIONS) {
+        if (false) {
             return null;
         }
         annd = new ByteVector();
@@ -473,7 +473,7 @@ class MethodWriter extends MethodVisitor {
     @Override
     public AnnotationVisitor visitAnnotation(final String desc,
                                              final boolean visible) {
-        if (!ClassReader.ANNOTATIONS) {
+        if (false) {
             return null;
         }
         ByteVector bv = new ByteVector();
@@ -493,7 +493,7 @@ class MethodWriter extends MethodVisitor {
     @Override
     public AnnotationVisitor visitParameterAnnotation(final int parameter,
                                                       final String desc, final boolean visible) {
-        if (!ClassReader.ANNOTATIONS) {
+        if (false) {
             return null;
         }
         ByteVector bv = new ByteVector();
@@ -540,7 +540,7 @@ class MethodWriter extends MethodVisitor {
     @Override
     public void visitFrame(final int type, final int nLocal,
                            final Object[] local, final int nStack, final Object[] stack) {
-        if (!ClassReader.FRAMES || compute == FRAMES) {
+        if (compute == FRAMES) {
             return;
         }
 
@@ -1237,7 +1237,7 @@ class MethodWriter extends MethodVisitor {
 
     @Override
     public void visitMaxs(final int maxStack, final int maxLocals) {
-        if (ClassReader.FRAMES && compute == FRAMES) {
+        if (compute == FRAMES) {
             // completes the control flow graph with exception handler blocks
             Handler handler = firstHandler;
             while (handler != null) {
@@ -1911,31 +1911,31 @@ class MethodWriter extends MethodVisitor {
             cw.newUTF8("Deprecated");
             size += 6;
         }
-        if (ClassReader.SIGNATURES && signature != null) {
+        if (signature != null) {
             cw.newUTF8("Signature");
             cw.newUTF8(signature);
             size += 8;
         }
-        if (ClassReader.ANNOTATIONS && annd != null) {
+        if (annd != null) {
             cw.newUTF8("AnnotationDefault");
             size += 6 + annd.length;
         }
-        if (ClassReader.ANNOTATIONS && anns != null) {
+        if (anns != null) {
             cw.newUTF8("RuntimeVisibleAnnotations");
             size += 8 + anns.getSize();
         }
-        if (ClassReader.ANNOTATIONS && ianns != null) {
+        if (ianns != null) {
             cw.newUTF8("RuntimeInvisibleAnnotations");
             size += 8 + ianns.getSize();
         }
-        if (ClassReader.ANNOTATIONS && panns != null) {
+        if (panns != null) {
             cw.newUTF8("RuntimeVisibleParameterAnnotations");
             size += 7 + 2 * (panns.length - synthetics);
             for (int i = panns.length - 1; i >= synthetics; --i) {
                 size += panns[i] == null ? 0 : panns[i].getSize();
             }
         }
-        if (ClassReader.ANNOTATIONS && ipanns != null) {
+        if (ipanns != null) {
             cw.newUTF8("RuntimeInvisibleParameterAnnotations");
             size += 7 + 2 * (ipanns.length - synthetics);
             for (int i = ipanns.length - 1; i >= synthetics; --i) {
@@ -1981,22 +1981,22 @@ class MethodWriter extends MethodVisitor {
         if ((access & Opcodes.ACC_DEPRECATED) != 0) {
             ++attributeCount;
         }
-        if (ClassReader.SIGNATURES && signature != null) {
+        if (signature != null) {
             ++attributeCount;
         }
-        if (ClassReader.ANNOTATIONS && annd != null) {
+        if (annd != null) {
             ++attributeCount;
         }
-        if (ClassReader.ANNOTATIONS && anns != null) {
+        if (anns != null) {
             ++attributeCount;
         }
-        if (ClassReader.ANNOTATIONS && ianns != null) {
+        if (ianns != null) {
             ++attributeCount;
         }
-        if (ClassReader.ANNOTATIONS && panns != null) {
+        if (panns != null) {
             ++attributeCount;
         }
-        if (ClassReader.ANNOTATIONS && ipanns != null) {
+        if (ipanns != null) {
             ++attributeCount;
         }
         if (attrs != null) {
@@ -2092,28 +2092,28 @@ class MethodWriter extends MethodVisitor {
         if ((access & Opcodes.ACC_DEPRECATED) != 0) {
             out.putShort(cw.newUTF8("Deprecated")).putInt(0);
         }
-        if (ClassReader.SIGNATURES && signature != null) {
+        if (signature != null) {
             out.putShort(cw.newUTF8("Signature")).putInt(2)
                     .putShort(cw.newUTF8(signature));
         }
-        if (ClassReader.ANNOTATIONS && annd != null) {
+        if (annd != null) {
             out.putShort(cw.newUTF8("AnnotationDefault"));
             out.putInt(annd.length);
             out.putByteArray(annd.data, 0, annd.length);
         }
-        if (ClassReader.ANNOTATIONS && anns != null) {
+        if (anns != null) {
             out.putShort(cw.newUTF8("RuntimeVisibleAnnotations"));
             anns.put(out);
         }
-        if (ClassReader.ANNOTATIONS && ianns != null) {
+        if (ianns != null) {
             out.putShort(cw.newUTF8("RuntimeInvisibleAnnotations"));
             ianns.put(out);
         }
-        if (ClassReader.ANNOTATIONS && panns != null) {
+        if (panns != null) {
             out.putShort(cw.newUTF8("RuntimeVisibleParameterAnnotations"));
             AnnotationWriter.put(panns, synthetics, out);
         }
-        if (ClassReader.ANNOTATIONS && ipanns != null) {
+        if (ipanns != null) {
             out.putShort(cw.newUTF8("RuntimeInvisibleParameterAnnotations"));
             AnnotationWriter.put(ipanns, synthetics, out);
         }

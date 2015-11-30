@@ -51,9 +51,7 @@ public class ReaderConditional implements ILookup {
         ReaderConditional that = (ReaderConditional) o;
 
         if (form != null ? !form.equals(that.form) : that.form != null) return false;
-        if (splicing != null ? !splicing.equals(that.splicing) : that.splicing != null)
-            return false;
-        return true;
+        return !(splicing != null ? !splicing.equals(that.splicing) : that.splicing != null);
     }
 
     @Override

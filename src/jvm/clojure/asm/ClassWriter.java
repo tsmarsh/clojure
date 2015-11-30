@@ -658,7 +658,7 @@ public class ClassWriter extends ClassVisitor {
         this.access = access;
         this.name = newClass(name);
         thisName = name;
-        if (ClassReader.SIGNATURES && signature != null) {
+        if (signature != null) {
             this.signature = newUTF8(signature);
         }
         this.superName = superName == null ? 0 : newClass(superName);
@@ -693,7 +693,7 @@ public class ClassWriter extends ClassVisitor {
     @Override
     public final AnnotationVisitor visitAnnotation(final String desc,
                                                    final boolean visible) {
-        if (!ClassReader.ANNOTATIONS) {
+        if (false) {
             return null;
         }
         ByteVector bv = new ByteVector();
@@ -783,7 +783,7 @@ public class ClassWriter extends ClassVisitor {
             size += 8 + bootstrapMethods.length;
             newUTF8("BootstrapMethods");
         }
-        if (ClassReader.SIGNATURES && signature != 0) {
+        if (signature != 0) {
             ++attributeCount;
             size += 8;
             newUTF8("Signature");
@@ -821,12 +821,12 @@ public class ClassWriter extends ClassVisitor {
             size += 8 + innerClasses.length;
             newUTF8("InnerClasses");
         }
-        if (ClassReader.ANNOTATIONS && anns != null) {
+        if (anns != null) {
             ++attributeCount;
             size += 8 + anns.getSize();
             newUTF8("RuntimeVisibleAnnotations");
         }
-        if (ClassReader.ANNOTATIONS && ianns != null) {
+        if (ianns != null) {
             ++attributeCount;
             size += 8 + ianns.getSize();
             newUTF8("RuntimeInvisibleAnnotations");
@@ -867,7 +867,7 @@ public class ClassWriter extends ClassVisitor {
                     bootstrapMethodsCount);
             out.putByteArray(bootstrapMethods.data, 0, bootstrapMethods.length);
         }
-        if (ClassReader.SIGNATURES && signature != 0) {
+        if (signature != 0) {
             out.putShort(newUTF8("Signature")).putInt(2).putShort(signature);
         }
         if (sourceFile != 0) {
@@ -896,11 +896,11 @@ public class ClassWriter extends ClassVisitor {
             out.putInt(innerClasses.length + 2).putShort(innerClassesCount);
             out.putByteArray(innerClasses.data, 0, innerClasses.length);
         }
-        if (ClassReader.ANNOTATIONS && anns != null) {
+        if (anns != null) {
             out.putShort(newUTF8("RuntimeVisibleAnnotations"));
             anns.put(out);
         }
-        if (ClassReader.ANNOTATIONS && ianns != null) {
+        if (ianns != null) {
             out.putShort(newUTF8("RuntimeInvisibleAnnotations"));
             ianns.put(out);
         }

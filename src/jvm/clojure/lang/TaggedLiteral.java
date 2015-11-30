@@ -49,9 +49,8 @@ public class TaggedLiteral implements ILookup {
         TaggedLiteral that = (TaggedLiteral) o;
 
         if (form != null ? !form.equals(that.form) : that.form != null) return false;
-        if (tag != null ? !tag.equals(that.tag) : that.tag != null) return false;
+        return !(tag != null ? !tag.equals(that.tag) : that.tag != null);
 
-        return true;
     }
 
     @Override

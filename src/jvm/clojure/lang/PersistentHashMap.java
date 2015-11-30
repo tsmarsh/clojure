@@ -118,7 +118,7 @@ public class PersistentHashMap extends APersistentMap implements IEditableCollec
     public boolean containsKey(Object key) {
         if (key == null)
             return hasNull;
-        return (root != null) ? root.find(0, hash(key), key, NOT_FOUND) != NOT_FOUND : false;
+        return (root != null) && root.find(0, hash(key), key, NOT_FOUND) != NOT_FOUND;
     }
 
     public IMapEntry entryAt(Object key) {

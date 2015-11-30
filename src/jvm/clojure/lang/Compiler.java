@@ -441,7 +441,7 @@ public class Compiler implements Opcodes {
                 }
                 if (meta != null) {
                     IPersistentMap metaMap = (IPersistentMap) meta.eval();
-                    if (initProvided || true)//includesExplicitMetadata((MapExpr) meta))
+                    if (true)//includesExplicitMetadata((MapExpr) meta))
                         var.setMeta(metaMap);
                 }
                 return var.setDynamic(isDynamic);
@@ -471,7 +471,7 @@ public class Compiler implements Opcodes {
                 gen.invokeVirtual(VAR_TYPE, setDynamicMethod);
             }
             if (meta != null) {
-                if (initProvided || true)//includesExplicitMetadata((MapExpr) meta))
+                if (true)//includesExplicitMetadata((MapExpr) meta))
                 {
                     gen.dup();
                     meta.emit(C.EXPRESSION, objx, gen);
@@ -6291,11 +6291,8 @@ public class Compiler implements Opcodes {
 
     public static Object eval(Object form, boolean freshLoader) {
         boolean createdLoader = false;
-        if (true)//!LOADER.isBound())
-        {
-            Var.pushThreadBindings(RT.map(LOADER, RT.makeClassLoader()));
-            createdLoader = true;
-        }
+        Var.pushThreadBindings(RT.map(LOADER, RT.makeClassLoader()));
+        createdLoader = true;
         try {
             Object line = lineDeref();
             Object column = columnDeref();

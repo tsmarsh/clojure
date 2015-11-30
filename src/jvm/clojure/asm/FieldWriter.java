@@ -118,7 +118,7 @@ final class FieldWriter extends FieldVisitor {
         this.access = access;
         this.name = cw.newUTF8(name);
         this.desc = cw.newUTF8(desc);
-        if (ClassReader.SIGNATURES && signature != null) {
+        if (signature != null) {
             this.signature = cw.newUTF8(signature);
         }
         if (value != null) {
@@ -133,7 +133,7 @@ final class FieldWriter extends FieldVisitor {
     @Override
     public AnnotationVisitor visitAnnotation(final String desc,
                                              final boolean visible) {
-        if (!ClassReader.ANNOTATIONS) {
+        if (false) {
             return null;
         }
         ByteVector bv = new ByteVector();
@@ -186,15 +186,15 @@ final class FieldWriter extends FieldVisitor {
             cw.newUTF8("Deprecated");
             size += 6;
         }
-        if (ClassReader.SIGNATURES && signature != 0) {
+        if (signature != 0) {
             cw.newUTF8("Signature");
             size += 8;
         }
-        if (ClassReader.ANNOTATIONS && anns != null) {
+        if (anns != null) {
             cw.newUTF8("RuntimeVisibleAnnotations");
             size += 8 + anns.getSize();
         }
-        if (ClassReader.ANNOTATIONS && ianns != null) {
+        if (ianns != null) {
             cw.newUTF8("RuntimeInvisibleAnnotations");
             size += 8 + ianns.getSize();
         }
@@ -228,13 +228,13 @@ final class FieldWriter extends FieldVisitor {
         if ((access & Opcodes.ACC_DEPRECATED) != 0) {
             ++attributeCount;
         }
-        if (ClassReader.SIGNATURES && signature != 0) {
+        if (signature != 0) {
             ++attributeCount;
         }
-        if (ClassReader.ANNOTATIONS && anns != null) {
+        if (anns != null) {
             ++attributeCount;
         }
-        if (ClassReader.ANNOTATIONS && ianns != null) {
+        if (ianns != null) {
             ++attributeCount;
         }
         if (attrs != null) {
@@ -254,15 +254,15 @@ final class FieldWriter extends FieldVisitor {
         if ((access & Opcodes.ACC_DEPRECATED) != 0) {
             out.putShort(cw.newUTF8("Deprecated")).putInt(0);
         }
-        if (ClassReader.SIGNATURES && signature != 0) {
+        if (signature != 0) {
             out.putShort(cw.newUTF8("Signature"));
             out.putInt(2).putShort(signature);
         }
-        if (ClassReader.ANNOTATIONS && anns != null) {
+        if (anns != null) {
             out.putShort(cw.newUTF8("RuntimeVisibleAnnotations"));
             anns.put(out);
         }
-        if (ClassReader.ANNOTATIONS && ianns != null) {
+        if (ianns != null) {
             out.putShort(cw.newUTF8("RuntimeInvisibleAnnotations"));
             ianns.put(out);
         }
