@@ -3389,7 +3389,7 @@ public class Compiler implements Opcodes {
                 PersistentVector argvs = PersistentVector.EMPTY;
                 for (int i = 0; i < args.count(); i++)
                     argvs = argvs.cons(((Expr) args.nth(i)).eval());
-                return fn.applyTo(RT.seq(Util.ret1(argvs, argvs = null)));
+                return fn.applyTo(RT.seq(Util.ret1(argvs, null)));
             } catch (Throwable e) {
                 if (!(e instanceof CompilerException))
                     throw new CompilerException(source, line, column, e);

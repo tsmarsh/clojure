@@ -544,7 +544,6 @@ public static class RegexReader extends AFn{
             int column = -1;
             if (r instanceof LineNumberingPushbackReader) {
                 line = ((LineNumberingPushbackReader) r).getLineNumber();
-                column = ((LineNumberingPushbackReader) r).getColumnNumber() - 1;
             }
             List list = readDelimitedList(')', r, true, opts);
             if (list.isEmpty())

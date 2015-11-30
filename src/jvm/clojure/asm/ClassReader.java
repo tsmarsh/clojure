@@ -1139,7 +1139,6 @@ public class ClassReader {
             }
             u += 6 + readInt(u + 4);
         }
-        u += 2;
 
         // generates the first (implicit) stack map frame
         if (FRAMES && stackMap != 0) {

@@ -601,7 +601,7 @@ public class RT {
     public static int count(Object o) {
         if (o instanceof Counted)
             return ((Counted) o).count();
-        return countFrom(Util.ret1(o, o = null));
+        return countFrom(Util.ret1(o, null));
     }
 
     static int countFrom(Object o) {
@@ -609,7 +609,6 @@ public class RT {
             return 0;
         else if (o instanceof IPersistentCollection) {
             ISeq s = seq(o);
-            o = null;
             int i = 0;
             for (; s != null; s = s.next()) {
                 if (s instanceof Counted)
@@ -830,7 +829,7 @@ public class RT {
     static public Object nth(Object coll, int n) {
         if (coll instanceof Indexed)
             return ((Indexed) coll).nth(n);
-        return nthFrom(Util.ret1(coll, coll = null), n);
+        return nthFrom(Util.ret1(coll, null), n);
     }
 
     static Object nthFrom(Object coll, int n) {
@@ -854,7 +853,6 @@ public class RT {
             throw new IndexOutOfBoundsException();
         } else if (coll instanceof Sequential) {
             ISeq seq = RT.seq(coll);
-            coll = null;
             for (int i = 0; i <= n && seq != null; ++i, seq = seq.next()) {
                 if (i == n)
                     return seq.first();
@@ -907,7 +905,6 @@ public class RT {
             return notFound;
         } else if (coll instanceof Sequential) {
             ISeq seq = RT.seq(coll);
-            coll = null;
             for (int i = 0; i <= n && seq != null; ++i, seq = seq.next()) {
                 if (i == n)
                     return seq.first();
