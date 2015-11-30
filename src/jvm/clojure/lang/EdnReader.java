@@ -505,7 +505,7 @@ public static class RegexReader extends AFn{
                 throw Util.runtimeException("EOF while reading character");
             String token = readToken(r, (char) ch, false);
             if (token.length() == 1)
-                return Character.valueOf(token.charAt(0));
+                return token.charAt(0);
             else if (token.equals("newline"))
                 return '\n';
             else if (token.equals("space"))

@@ -56,8 +56,8 @@ public class Reflector {
         } else //overloaded w/same arity
         {
             Method foundm = null;
-            for (Iterator i = methods.iterator(); i.hasNext(); ) {
-                m = (Method) i.next();
+            for (Object method : methods) {
+                m = (Method) method;
 
                 Class[] params = m.getParameterTypes();
                 if (isCongruent(params, args)) {
@@ -132,8 +132,7 @@ public class Reflector {
         try {
             Constructor[] allctors = c.getConstructors();
             ArrayList ctors = new ArrayList();
-            for (int i = 0; i < allctors.length; i++) {
-                Constructor ctor = allctors[i];
+            for (Constructor ctor : allctors) {
                 if (ctor.getParameterTypes().length == args.length)
                     ctors.add(ctor);
             }
@@ -145,8 +144,8 @@ public class Reflector {
                 return ctor.newInstance(boxArgs(ctor.getParameterTypes(), args));
             } else //overloaded w/same arity
             {
-                for (Iterator iterator = ctors.iterator(); iterator.hasNext(); ) {
-                    Constructor ctor = (Constructor) iterator.next();
+                for (Object ctor1 : ctors) {
+                    Constructor ctor = (Constructor) ctor1;
                     Class[] params = ctor.getParameterTypes();
                     if (isCongruent(params, args)) {
                         Object[] boxedArgs = boxArgs(params, args);
@@ -309,10 +308,10 @@ public class Reflector {
 
     static public Field getField(Class c, String name, boolean getStatics) {
         Field[] allfields = c.getFields();
-        for (int i = 0; i < allfields.length; i++) {
-            if (name.equals(allfields[i].getName())
-                    && Modifier.isStatic(allfields[i].getModifiers()) == getStatics)
-                return allfields[i];
+        for (Field allfield : allfields) {
+            if (name.equals(allfield.getName())
+                    && Modifier.isStatic(allfield.getModifiers()) == getStatics)
+                return allfield;
         }
         return null;
     }
@@ -321,8 +320,7 @@ public class Reflector {
         Method[] allmethods = c.getMethods();
         ArrayList methods = new ArrayList();
         ArrayList bridgeMethods = new ArrayList();
-        for (int i = 0; i < allmethods.length; i++) {
-            Method method = allmethods[i];
+        for (Method method : allmethods) {
             if (name.equals(method.getName())
                     && Modifier.isStatic(method.getModifiers()) == getStatics
                     && method.getParameterTypes().length == arity) {
@@ -350,11 +348,11 @@ public class Reflector {
 
         if (!getStatics && c.isInterface()) {
             allmethods = Object.class.getMethods();
-            for (int i = 0; i < allmethods.length; i++) {
-                if (name.equals(allmethods[i].getName())
-                        && Modifier.isStatic(allmethods[i].getModifiers()) == getStatics
-                        && allmethods[i].getParameterTypes().length == arity) {
-                    methods.add(allmethods[i]);
+            for (Method allmethod : allmethods) {
+                if (name.equals(allmethod.getName())
+                        && Modifier.isStatic(allmethod.getModifiers()) == getStatics
+                        && allmethod.getParameterTypes().length == arity) {
+                    methods.add(allmethod);
                 }
             }
         }

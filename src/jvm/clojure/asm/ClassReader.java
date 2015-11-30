@@ -1532,7 +1532,7 @@ public class ClassReader {
                 break;
             case 'B': // pointer to CONSTANT_Byte
                 av.visit(name,
-                        new Byte((byte) readInt(items[readUnsignedShort(v)])));
+                        (byte) readInt(items[readUnsignedShort(v)]));
                 v += 2;
                 break;
             case 'Z': // pointer to CONSTANT_Boolean
@@ -1542,13 +1542,11 @@ public class ClassReader {
                 v += 2;
                 break;
             case 'S': // pointer to CONSTANT_Short
-                av.visit(name, new Short(
-                        (short) readInt(items[readUnsignedShort(v)])));
+                av.visit(name, (short) readInt(items[readUnsignedShort(v)]));
                 v += 2;
                 break;
             case 'C': // pointer to CONSTANT_Char
-                av.visit(name, new Character(
-                        (char) readInt(items[readUnsignedShort(v)])));
+                av.visit(name, (char) readInt(items[readUnsignedShort(v)]));
                 v += 2;
                 break;
             case 's': // pointer to CONSTANT_Utf8
@@ -1946,9 +1944,9 @@ public class ClassReader {
     private Attribute readAttribute(final Attribute[] attrs, final String type,
                                     final int off, final int len, final char[] buf, final int codeOff,
                                     final Label[] labels) {
-        for (int i = 0; i < attrs.length; ++i) {
-            if (attrs[i].type.equals(type)) {
-                return attrs[i].read(this, off, len, buf, codeOff, labels);
+        for (Attribute attr : attrs) {
+            if (attr.type.equals(type)) {
+                return attr.read(this, off, len, buf, codeOff, labels);
             }
         }
         return new Attribute(type).read(this, off, len, null, -1, null);
@@ -2176,13 +2174,13 @@ public class ClassReader {
         int index = items[item];
         switch (b[index - 1]) {
             case ClassWriter.INT:
-                return new Integer(readInt(index));
+                return readInt(index);
             case ClassWriter.FLOAT:
-                return new Float(Float.intBitsToFloat(readInt(index)));
+                return Float.intBitsToFloat(readInt(index));
             case ClassWriter.LONG:
-                return new Long(readLong(index));
+                return readLong(index);
             case ClassWriter.DOUBLE:
-                return new Double(Double.longBitsToDouble(readLong(index)));
+                return Double.longBitsToDouble(readLong(index));
             case ClassWriter.CLASS:
                 return Type.getObjectType(readUTF8(index, buf));
             case ClassWriter.STR:

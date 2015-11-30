@@ -219,7 +219,7 @@ public class LispReader {
                     return eofValue;
                 }
 
-                if (returnOn != null && (returnOn.charValue() == ch)) {
+                if (returnOn != null && (returnOn == ch)) {
                     return returnOnValue;
                 }
 
@@ -895,7 +895,7 @@ static class DerefReader extends AFn{
                 throw Util.runtimeException("EOF while reading character");
             String token = readToken(r, (char) ch);
             if (token.length() == 1)
-                return Character.valueOf(token.charAt(0));
+                return token.charAt(0);
             else if (token.equals("newline"))
                 return '\n';
             else if (token.equals("space"))

@@ -555,7 +555,7 @@ class MethodWriter extends MethodVisitor {
                     frame[frameIndex++] = Frame.OBJECT
                             | cw.addType((String) local[i]);
                 } else if (local[i] instanceof Integer) {
-                    frame[frameIndex++] = ((Integer) local[i]).intValue();
+                    frame[frameIndex++] = (Integer) local[i];
                 } else {
                     frame[frameIndex++] = Frame.UNINITIALIZED
                             | cw.addUninitializedType("",
@@ -567,7 +567,7 @@ class MethodWriter extends MethodVisitor {
                     frame[frameIndex++] = Frame.OBJECT
                             | cw.addType((String) stack[i]);
                 } else if (stack[i] instanceof Integer) {
-                    frame[frameIndex++] = ((Integer) stack[i]).intValue();
+                    frame[frameIndex++] = (Integer) stack[i];
                 } else {
                     frame[frameIndex++] = Frame.UNINITIALIZED
                             | cw.addUninitializedType("",
@@ -1108,8 +1108,8 @@ class MethodWriter extends MethodVisitor {
         code.putByteArray(null, 0, (4 - code.length % 4) % 4);
         dflt.put(this, code, source, true);
         code.putInt(min).putInt(max);
-        for (int i = 0; i < labels.length; ++i) {
-            labels[i].put(this, code, source, true);
+        for (Label label : labels) {
+            label.put(this, code, source, true);
         }
         // updates currentBlock
         visitSwitchInsn(dflt, labels);
@@ -1140,17 +1140,17 @@ class MethodWriter extends MethodVisitor {
                 // adds current block successors
                 addSuccessor(Edge.NORMAL, dflt);
                 dflt.getFirst().status |= Label.TARGET;
-                for (int i = 0; i < labels.length; ++i) {
-                    addSuccessor(Edge.NORMAL, labels[i]);
-                    labels[i].getFirst().status |= Label.TARGET;
+                for (Label label : labels) {
+                    addSuccessor(Edge.NORMAL, label);
+                    label.getFirst().status |= Label.TARGET;
                 }
             } else {
                 // updates current stack size (max stack size unchanged)
                 --stackSize;
                 // adds current block successors
                 addSuccessor(stackSize, dflt);
-                for (int i = 0; i < labels.length; ++i) {
-                    addSuccessor(stackSize, labels[i]);
+                for (Label label : labels) {
+                    addSuccessor(stackSize, label);
                 }
             }
             // ends current block
@@ -1795,7 +1795,7 @@ class MethodWriter extends MethodVisitor {
                         stackMap.putByte(v);
                 }
             } else {
-                StringBuffer buf = new StringBuffer();
+                StringBuilder buf = new StringBuilder();
                 d >>= 28;
                 while (d-- > 0) {
                     buf.append('[');
@@ -1840,7 +1840,7 @@ class MethodWriter extends MethodVisitor {
         if (type instanceof String) {
             stackMap.putByte(7).putShort(cw.newClass((String) type));
         } else if (type instanceof Integer) {
-            stackMap.putByte(((Integer) type).intValue());
+            stackMap.putByte((Integer) type);
         } else {
             stackMap.putByte(8).putShort(((Label) type).position);
         }

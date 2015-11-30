@@ -837,7 +837,7 @@ public class RT {
         if (coll == null)
             return null;
         else if (coll instanceof CharSequence)
-            return Character.valueOf(((CharSequence) coll).charAt(n));
+            return ((CharSequence) coll).charAt(n);
         else if (coll.getClass().isArray())
             return Reflector.prepRet(coll.getClass().getComponentType(), Array.get(coll, n));
         else if (coll instanceof RandomAccess)
@@ -882,7 +882,7 @@ public class RT {
         else if (coll instanceof CharSequence) {
             CharSequence s = (CharSequence) coll;
             if (n < s.length())
-                return Character.valueOf(s.charAt(n));
+                return s.charAt(n);
             return notFound;
         } else if (coll.getClass().isArray()) {
             if (n < Array.getLength(coll))
@@ -944,7 +944,7 @@ public class RT {
     }
 
     static public Character box(char x) {
-        return Character.valueOf(x);
+        return x;
     }
 
     static public Object box(boolean x) {
@@ -981,7 +981,7 @@ public class RT {
 
     static public char charCast(Object x) {
         if (x instanceof Character)
-            return ((Character) x).charValue();
+            return (Character) x;
 
         long n = ((Number) x).longValue();
         if (n < Character.MIN_VALUE || n > Character.MAX_VALUE)
@@ -1036,7 +1036,7 @@ public class RT {
 
     static public boolean booleanCast(Object x) {
         if (x instanceof Boolean)
-            return ((Boolean) x).booleanValue();
+            return (Boolean) x;
         return x != null;
     }
 
@@ -1046,7 +1046,7 @@ public class RT {
 
     static public byte byteCast(Object x) {
         if (x instanceof Byte)
-            return ((Byte) x).byteValue();
+            return (Byte) x;
         long n = longCast(x);
         if (n < Byte.MIN_VALUE || n > Byte.MAX_VALUE)
             throw new IllegalArgumentException("Value out of range for byte: " + x);
@@ -1093,7 +1093,7 @@ public class RT {
 
     static public short shortCast(Object x) {
         if (x instanceof Short)
-            return ((Short) x).shortValue();
+            return (Short) x;
         long n = longCast(x);
         if (n < Short.MIN_VALUE || n > Short.MAX_VALUE)
             throw new IllegalArgumentException("Value out of range for short: " + x);
@@ -1137,12 +1137,12 @@ public class RT {
 
     static public int intCast(Object x) {
         if (x instanceof Integer)
-            return ((Integer) x).intValue();
+            return (Integer) x;
         if (x instanceof Number) {
             long n = longCast(x);
             return intCast(n);
         }
-        return ((Character) x).charValue();
+        return (Character) x;
     }
 
     static public int intCast(char x) {
@@ -1235,7 +1235,7 @@ public class RT {
 
     static public float floatCast(Object x) {
         if (x instanceof Float)
-            return ((Float) x).floatValue();
+            return (Float) x;
 
         double n = ((Number) x).doubleValue();
         if (n < -Float.MAX_VALUE || n > Float.MAX_VALUE)
@@ -1358,7 +1358,7 @@ public class RT {
 
     static public char uncheckedCharCast(Object x) {
         if (x instanceof Character)
-            return ((Character) x).charValue();
+            return (Character) x;
         return (char) ((Number) x).longValue();
     }
 
@@ -1393,7 +1393,7 @@ public class RT {
     static public int uncheckedIntCast(Object x) {
         if (x instanceof Number)
             return ((Number) x).intValue();
-        return ((Character) x).charValue();
+        return (Character) x;
     }
 
     static public int uncheckedIntCast(byte x) {
@@ -1887,7 +1887,7 @@ public class RT {
                 }
                 w.write('}');
             } else if (x instanceof Character) {
-                char c = ((Character) x).charValue();
+                char c = (Character) x;
                 if (!readably)
                     w.write(c);
                 else {
@@ -1962,7 +1962,7 @@ public class RT {
             w.write('"');
         } else if (obj instanceof Character) {
             w.write('\\');
-            char c = ((Character) obj).charValue();
+            char c = (Character) obj;
             switch (c) {
                 case '\n':
                     w.write("newline");

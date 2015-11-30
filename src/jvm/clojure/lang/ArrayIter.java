@@ -100,7 +100,7 @@ public class ArrayIter implements Iterator {
 
         public Long next() {
             if (array != null && i < array.length)
-                return Long.valueOf(array[i++]);
+                return (long) array[i++];
             throw new java.util.NoSuchElementException();
         }
 
@@ -124,7 +124,7 @@ public class ArrayIter implements Iterator {
 
         public Double next() {
             if (array != null && i < array.length)
-                return Double.valueOf(array[i++]);
+                return (double) array[i++];
             throw new java.util.NoSuchElementException();
         }
 
@@ -173,7 +173,7 @@ public class ArrayIter implements Iterator {
 
         public Long next() {
             if (array != null && i < array.length)
-                return Long.valueOf(array[i++]);
+                return array[i++];
             throw new java.util.NoSuchElementException();
         }
 
@@ -248,7 +248,7 @@ public class ArrayIter implements Iterator {
 
         public Long next() {
             if (array != null && i < array.length)
-                return Long.valueOf(array[i++]);
+                return (long) array[i++];
             throw new java.util.NoSuchElementException();
         }
 
@@ -273,7 +273,7 @@ public class ArrayIter implements Iterator {
 
         public Boolean next() {
             if (array != null && i < array.length)
-                return Boolean.valueOf(array[i++]);
+                return array[i++];
             throw new java.util.NoSuchElementException();
         }
 

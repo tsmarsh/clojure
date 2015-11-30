@@ -35,7 +35,7 @@ public class StringSeq extends ASeq implements IndexedSeq {
     }
 
     public Object first() {
-        return Character.valueOf(s.charAt(i));
+        return s.charAt(i);
     }
 
     public ISeq next() {

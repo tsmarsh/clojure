@@ -608,15 +608,15 @@ public class Numbers {
         }
 
         final public Number add(Number x, Number y) {
-            return Double.valueOf(x.doubleValue() + y.doubleValue());
+            return x.doubleValue() + y.doubleValue();
         }
 
         final public Number multiply(Number x, Number y) {
-            return Double.valueOf(x.doubleValue() * y.doubleValue());
+            return x.doubleValue() * y.doubleValue();
         }
 
         public Number divide(Number x, Number y) {
-            return Double.valueOf(x.doubleValue() / y.doubleValue());
+            return x.doubleValue() / y.doubleValue();
         }
 
         public Number quotient(Number x, Number y) {
@@ -645,15 +645,15 @@ public class Numbers {
 
         //public Number subtract(Number x, Number y);
         final public Number negate(Number x) {
-            return Double.valueOf(-x.doubleValue());
+            return -x.doubleValue();
         }
 
         public Number inc(Number x) {
-            return Double.valueOf(x.doubleValue() + 1);
+            return x.doubleValue() + 1;
         }
 
         public Number dec(Number x) {
-            return Double.valueOf(x.doubleValue() - 1);
+            return x.doubleValue() - 1;
         }
     }
 
@@ -1375,11 +1375,11 @@ public class Numbers {
     }
 
     static public Number num(float x) {
-        return Float.valueOf(x);
+        return x;
     }
 
     static public Number num(double x) {
-        return Double.valueOf(x);
+        return x;
     }
 
     static public double add(double x, double y) {
@@ -1729,7 +1729,7 @@ public class Numbers {
 //}
 
     static public Number num(long x) {
-        return Long.valueOf(x);
+        return x;
     }
 
     static public long unchecked_add(long x, long y) {

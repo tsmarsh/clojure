@@ -95,8 +95,7 @@ public class PersistentVector extends APersistentVector implements IObj, IEditab
             return new PersistentVector(size, 5, PersistentVector.EMPTY_NODE, list.toArray());
 
         TransientVector ret = EMPTY.asTransient();
-        for (int i = 0; i < size; i++)
-            ret = ret.conj(list.get(i));
+		for (Object aList : list) ret = ret.conj(aList);
         return ret.persistent();
     }
 
@@ -328,11 +327,11 @@ public class PersistentVector extends APersistentVector implements IObj, IEditab
         int step = 0;
         for (int i = 0; i < cnt; i += step) {
             Object[] array = arrayFor(i);
-            for (int j = 0; j < array.length; ++j) {
-                init = f.invoke(init, array[j]);
-                if (RT.isReduced(init))
-                    return ((IDeref) init).deref();
-            }
+			for (Object anArray : array) {
+				init = f.invoke(init, anArray);
+				if (RT.isReduced(init))
+					return ((IDeref) init).deref();
+			}
             step = array.length;
         }
         return init;

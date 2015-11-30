@@ -415,9 +415,9 @@ public abstract class AdviceAdapter extends GeneratorAdapter implements Opcodes 
         mv.visitMethodInsn(opcode, owner, name, desc);
         if (constructor) {
             Type[] types = Type.getArgumentTypes(desc);
-            for (int i = 0; i < types.length; i++) {
+            for (Type type1 : types) {
                 popValue();
-                if (types[i].getSize() == 2) {
+                if (type1.getSize() == 2) {
                     popValue();
                 }
             }
@@ -456,9 +456,9 @@ public abstract class AdviceAdapter extends GeneratorAdapter implements Opcodes 
         mv.visitInvokeDynamicInsn(name, desc, bsm, bsmArgs);
         if (constructor) {
             Type[] types = Type.getArgumentTypes(desc);
-            for (int i = 0; i < types.length; i++) {
+            for (Type type : types) {
                 popValue();
-                if (types[i].getSize() == 2) {
+                if (type.getSize() == 2) {
                     popValue();
                 }
             }
@@ -540,8 +540,8 @@ public abstract class AdviceAdapter extends GeneratorAdapter implements Opcodes 
 
     private void addBranches(final Label dflt, final Label[] labels) {
         addBranch(dflt);
-        for (int i = 0; i < labels.length; i++) {
-            addBranch(labels[i]);
+        for (Label label : labels) {
+            addBranch(label);
         }
     }
 

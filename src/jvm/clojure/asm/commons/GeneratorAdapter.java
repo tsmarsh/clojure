@@ -369,7 +369,7 @@ public class GeneratorAdapter extends LocalVariablesSorter {
         } else if (value >= Short.MIN_VALUE && value <= Short.MAX_VALUE) {
             mv.visitIntInsn(Opcodes.SIPUSH, value);
         } else {
-            mv.visitLdcInsn(new Integer(value));
+            mv.visitLdcInsn(value);
         }
     }
 
@@ -383,7 +383,7 @@ public class GeneratorAdapter extends LocalVariablesSorter {
         if (value == 0L || value == 1L) {
             mv.visitInsn(Opcodes.LCONST_0 + (int) value);
         } else {
-            mv.visitLdcInsn(new Long(value));
+            mv.visitLdcInsn(value);
         }
     }
 
@@ -398,7 +398,7 @@ public class GeneratorAdapter extends LocalVariablesSorter {
         if (bits == 0L || bits == 0x3f800000 || bits == 0x40000000) { // 0..2
             mv.visitInsn(Opcodes.FCONST_0 + (int) value);
         } else {
-            mv.visitLdcInsn(new Float(value));
+            mv.visitLdcInsn(value);
         }
     }
 
@@ -413,7 +413,7 @@ public class GeneratorAdapter extends LocalVariablesSorter {
         if (bits == 0L || bits == 0x3ff0000000000000L) { // +0.0d and 1.0d
             mv.visitInsn(Opcodes.DCONST_0 + (int) value);
         } else {
-            mv.visitLdcInsn(new Double(value));
+            mv.visitLdcInsn(value);
         }
     }
 
@@ -1235,8 +1235,8 @@ public class GeneratorAdapter extends LocalVariablesSorter {
             if (useTable) {
                 Label[] labels = new Label[range];
                 Arrays.fill(labels, def);
-                for (int i = 0; i < len; ++i) {
-                    labels[keys[i] - min] = newLabel();
+                for (int key : keys) {
+                    labels[key - min] = newLabel();
                 }
                 mv.visitTableSwitchInsn(min, max, def, labels);
                 for (int i = 0; i < range; ++i) {

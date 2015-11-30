@@ -1374,8 +1374,8 @@ public class Compiler implements Opcodes {
                     if (methods.size() > 1) {
                         ArrayList<Class[]> params = new ArrayList();
                         ArrayList<Class> rets = new ArrayList();
-                        for (int i = 0; i < methods.size(); i++) {
-                            java.lang.reflect.Method m = (java.lang.reflect.Method) methods.get(i);
+                        for (Object method1 : methods) {
+                            java.lang.reflect.Method m = (java.lang.reflect.Method) method1;
                             params.add(m.getParameterTypes());
                             rets.add(m.getReturnType());
                         }
@@ -1525,8 +1525,8 @@ public class Compiler implements Opcodes {
             if (methods.size() > 1) {
                 ArrayList<Class[]> params = new ArrayList();
                 ArrayList<Class> rets = new ArrayList();
-                for (int i = 0; i < methods.size(); i++) {
-                    java.lang.reflect.Method m = (java.lang.reflect.Method) methods.get(i);
+                for (Object method1 : methods) {
+                    java.lang.reflect.Method m = (java.lang.reflect.Method) method1;
                     params.add(m.getParameterTypes());
                     rets.add(m.getReturnType());
                 }
@@ -2348,8 +2348,7 @@ public class Compiler implements Opcodes {
             ArrayList ctors = new ArrayList();
             ArrayList<Class[]> params = new ArrayList();
             ArrayList<Class> rets = new ArrayList();
-            for (int i = 0; i < allctors.length; i++) {
-                Constructor ctor = allctors[i];
+            for (Constructor ctor : allctors) {
                 if (ctor.getParameterTypes().length == args.count()) {
                     ctors.add(ctor);
                     params.add(ctor.getParameterTypes());
@@ -3707,9 +3706,9 @@ public class Compiler implements Opcodes {
                 fn.canBeDirect = !fn.hasEnclosingMethod && fn.closes.count() == 0 && !usesThis;
 
                 IPersistentCollection methods = null;
-                for (int i = 0; i < methodArray.length; i++)
-                    if (methodArray[i] != null)
-                        methods = RT.conj(methods, methodArray[i]);
+                for (FnMethod aMethodArray : methodArray)
+                    if (aMethodArray != null)
+                        methods = RT.conj(methods, aMethodArray);
                 if (variadicMethod != null)
                     methods = RT.conj(methods, variadicMethod);
 
@@ -4297,21 +4296,21 @@ public class Compiler implements Opcodes {
             else if (value instanceof String) {
                 gen.push((String) value);
             } else if (value instanceof Boolean) {
-                if (((Boolean) value).booleanValue())
+                if ((Boolean) value)
                     gen.getStatic(BOOLEAN_OBJECT_TYPE, "TRUE", BOOLEAN_OBJECT_TYPE);
                 else
                     gen.getStatic(BOOLEAN_OBJECT_TYPE, "FALSE", BOOLEAN_OBJECT_TYPE);
             } else if (value instanceof Integer) {
-                gen.push(((Integer) value).intValue());
+                gen.push((Integer) value);
                 gen.invokeStatic(Type.getType(Integer.class), Method.getMethod("Integer valueOf(int)"));
             } else if (value instanceof Long) {
-                gen.push(((Long) value).longValue());
+                gen.push((Long) value);
                 gen.invokeStatic(Type.getType(Long.class), Method.getMethod("Long valueOf(long)"));
             } else if (value instanceof Double) {
-                gen.push(((Double) value).doubleValue());
+                gen.push((Double) value);
                 gen.invokeStatic(Type.getType(Double.class), Method.getMethod("Double valueOf(double)"));
             } else if (value instanceof Character) {
-                gen.push(((Character) value).charValue());
+                gen.push((Character) value);
                 gen.invokeStatic(Type.getType(Character.class), Method.getMethod("Character valueOf(char)"));
             } else if (value instanceof Class) {
                 Class cc = (Class) value;
